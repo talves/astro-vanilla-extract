@@ -11,5 +11,9 @@
   },
   "dependencies": {
     "astro": "^2.3.0"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.11.0",
+    "@vanilla-extract/vite-plugin": "^3.8.0"
   }
 }
