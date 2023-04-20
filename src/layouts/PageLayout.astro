@@ -1,0 +1,31 @@
+---
+import {
+  container,
+  contentWrapper,
+  footer,
+  intro,
+  wrapper,
+} from "@/layouts/BaseLayout.css";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<div class:list={[container]}>
+  <div class:list={[wrapper]}>
+    <main class:list={[contentWrapper]}>
+      <h1>{title}</h1>
+      <p class:list={[intro]}>Here&rsquo;s the latest theme&hellip;</p>
+      <hr />
+      <slot />
+    </main>
+    <footer class:list={[contentWrapper, footer]}>
+      <hr />
+      <p>You can <a href="#">unsubscribe here</a><sup>2</sup>.</p>
+      <p><code> var this = "this is this"</code></p>
+    </footer>
+  </div>
+</div>

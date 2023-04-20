@@ -1,8 +1,5 @@
 import { createTheme, createThemeContract } from "@vanilla-extract/css";
 
-const fallbackSansFonts =
-  "Montserrat, system-ui, '-apple-system', BlinkMacSystemFont, Segoe UI, Roboto, 'Helvetica Neue', Arial, Noto Sans, sans-serif, 'Apple Color Emoji', Segoe UI Emoji, 'Segoe UI Symbol', 'Noto Color Emoji'";
-
 const colours = {
   webOrange: "hsl(39 100% 50%)",
   azureRadiance: "hsl(202 100% 50%)",
@@ -126,6 +123,42 @@ const commonBackShadow = {
   md: `0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)`,
   lg: `0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)`,
 };
+
+export const sans = [
+  "ui-sans-serif",
+  "system-ui",
+  "-apple-system",
+  "BlinkMacSystemFont",
+  '"Segoe UI"',
+  "Roboto",
+  '"Helvetica Neue"',
+  "Arial",
+  '"Noto Sans"',
+  "sans-serif",
+  '"Apple Color Emoji"',
+  '"Segoe UI Emoji"',
+  '"Segoe UI Symbol"',
+  '"Noto Color Emoji"',
+];
+export const serif = [
+  "ui-serif",
+  "Georgia",
+  "Cambria",
+  '"Times New Roman"',
+  "Times",
+  "serif",
+];
+export const mono = [
+  "ui-monospace",
+  "SFMono-Regular",
+  "Menlo",
+  "Monaco",
+  "Consolas",
+  '"Liberation Mono"',
+  '"Courier New"',
+  "monospace",
+];
+const fallbackSansFonts = sans.toString();
 
 const commonVars = {
   font: {

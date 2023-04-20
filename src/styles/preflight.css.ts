@@ -1,4 +1,5 @@
-import { fontFace, globalStyle, style } from "@vanilla-extract/css";
+import { globalStyle } from "@vanilla-extract/css";
+import { mono, sans } from "@/styles/themes.css";
 
 /*
 Adopted from Tailwind preflight: https://github.com/tailwindlabs/tailwindcss/blob/master/src/css/preflight.css
@@ -8,7 +9,7 @@ globalStyle("*, ::before, ::after", {
   boxSizing: "border-box",
   borderWidth: 0,
   borderStyle: "solid",
-  borderColor: "theme('borderColor.DEFAULT', currentColor)",
+  borderColor: "currentColor",
 });
 
 globalStyle("html", {
@@ -16,9 +17,9 @@ globalStyle("html", {
   WebkitTextSizeAdjust: "100%",
   MozTabSize: "4",
   tabSize: "4",
-  fontFamily: `theme('fontFamily.sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji")`,
-  fontFeatureSettings: `theme('fontFamily.sans[1].fontFeatureSettings', normal)`,
-  fontVariationSettings: `theme('fontFamily.sans[1].fontVariationSettings', normal)`,
+  fontFamily: `${sans.toString()}`,
+  fontFeatureSettings: "normal",
+  fontVariationSettings: "normal",
 });
 
 globalStyle("body", {
@@ -51,7 +52,7 @@ globalStyle("b, strong", {
 });
 
 globalStyle("code, kbd, samp, pre", {
-  fontFamily: `theme('fontFamily.mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace)`,
+  fontFamily: `${mono.toString()}`,
   fontSize: "1em",
 });
 
@@ -162,7 +163,7 @@ globalStyle("textarea", {
 
 globalStyle("input::placeholder, textarea::placeholder", {
   opacity: 1,
-  color: "theme('colors.gray.400', #9ca3af)",
+  color: "#9ca3af",
 });
 
 globalStyle(`button, [role="button"]`, {

@@ -1,8 +1,11 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro"
-import ThemeToggle from "@/components/ui/theme-toggle.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
+import ThemeToggle from "@/components/ui/theme-toggle.astro";
 ---
 
 <BaseLayout description="Vanilla Extract Example" title="Home Page">
-	<ThemeToggle />
+  <PageLayout title="Welcome to the home page">
+    <ThemeToggle />
+  </PageLayout>
 </BaseLayout>
