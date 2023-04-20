@@ -7,6 +7,7 @@ import {
   wrapper,
 } from "@/layouts/BaseLayout.css";
 import "@/styles/fonts.css";
+import "@/styles/preflight.css";
 import "@/styles/global.css";
 import { lightThemeClass } from "@/styles/themes.css";
 
@@ -39,7 +40,8 @@ const { description, title } = Astro.props as Props;
       </main>
       <footer class:list={[contentWrapper, footer]}>
         <hr />
-        <p>You can <a href="#">unsubscribe here</a>.</p>
+        <p>You can <a href="#">unsubscribe here</a><sup>2</sup>.</p>
+        <p><code> var this = "this is this"</code></p>
       </footer>
     </div>
   </body>
