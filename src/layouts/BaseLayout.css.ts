@@ -1,23 +1,23 @@
 import { style } from "@vanilla-extract/css";
-import { theme } from "@/styles/themes.css";
+import { vars } from "@/styles/themes.css";
 
 export const container = style({
   display: "flex",
   flexDirection: "column",
-  marginBlock: theme.spacing.size12,
-  backgroundColor: theme.colours.surfaceAlt,
-  color: theme.colours.text,
+  marginBlock: vars.space.lg,
+  backgroundColor: vars.colors.surfaceAlt,
+  color: vars.colors.text,
   maxWidth: "100%",
 });
 
 export const wrapper = style({
-  paddingBlock: theme.spacing.size6,
-  marginBlock: theme.spacing.size12,
-  backgroundColor: theme.colours.surface,
-  boxShadow: theme.boxShadow.lowElevation,
+  paddingBlock: vars.space.sm,
+  marginBlock: vars.space.lg,
+  backgroundColor: vars.colors.surface,
+  boxShadow: vars.boxShadow.lowElevation,
   "@media": {
     "(min-width: 48rem)": {
-      width: theme.widths.maxWidth3XL,
+      width: vars.widths.maxWidth3XL,
     },
   },
 });
@@ -25,29 +25,29 @@ export const wrapper = style({
 export const contentWrapper = style({
   marginLeft: "auto",
   marginRight: "auto",
-  paddingBottom: theme.spacing.size4,
-  paddingLeft: theme.spacing.size6,
-  paddingRight: theme.spacing.size6,
+  paddingBottom: vars.space.xs,
+  paddingLeft: vars.space.sm,
+  paddingRight: vars.space.sm,
   maxWidth: "100%",
   "@media": {
     "(min-width: 48rem)": {
-      maxWidth: theme.widths.maxWidthText,
-      paddingLeft: theme.spacing.size0,
-      paddingRight: theme.spacing.size0,
+      maxWidth: vars.widths.maxWidthText,
+      paddingLeft: vars.space.zero,
+      paddingRight: vars.space.zero,
     },
   },
 });
 
 export const intro = style({
-  color: theme.colours.primary,
-  fontFamily: theme.fontFamily.subheading,
-  fontSize: theme.fontSize.size3,
+  color: vars.colors.primary,
+  fontFamily: vars.fontFamily.subheading,
+  fontSize: vars.fontSize.lg,
 });
 
 export const footer = style({
   selectors: {
     [`${wrapper} &`]: {
-      fontSize: theme.fontSize.size2,
+      fontSize: vars.fontSize.lg,
     },
   },
 });
