@@ -2,20 +2,6 @@ import { createTheme, createThemeContract } from "@vanilla-extract/css";
 import { theme } from "./theme";
 import colors from "@/styles/colors";
 
-// const colours = {
-//   // webOrange: "hsl(39 100% 50%)",
-//   // azureRadiance: "hsl(202 100% 50%)",
-//   // astronaut: "hsl(240 46% 31%)",
-//   // shark: "hsl(216 7% 15%)",
-//   // sharkTint10: "hsl(216 4% 23%)",
-//   // sharkShadow: "216 7% 11%",
-//   // solitude: "hsl(206 100% 96%)",
-//   // solitudeTint70: "hsl(206 100% 99%)",
-//   // solitudeShade10: "hsl(208 28% 86%)",
-//   // solitudeShadow: "209 25% 60%",
-//   ...colors,
-// };
-
 export const vars = createThemeContract({
   colors: {
     primary: ``,
