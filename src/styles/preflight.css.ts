@@ -1,5 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
-import { mono, sans } from "@/styles/themes.css";
+import { theme } from "@/styles/theme";
 
 /*
 Adopted from Tailwind preflight: https://github.com/tailwindlabs/tailwindcss/blob/master/src/css/preflight.css
@@ -17,7 +17,7 @@ globalStyle("html", {
   WebkitTextSizeAdjust: "100%",
   MozTabSize: "4",
   tabSize: "4",
-  fontFamily: `${sans.toString()}`,
+  fontFamily: `${theme.fontFamily.sans.toString()}`,
   fontFeatureSettings: "normal",
   fontVariationSettings: "normal",
 });
@@ -52,7 +52,7 @@ globalStyle("b, strong", {
 });
 
 globalStyle("code, kbd, samp, pre", {
-  fontFamily: `${mono.toString()}`,
+  fontFamily: `${theme.fontFamily.mono.toString()}`,
   fontSize: "1em",
 });
 
