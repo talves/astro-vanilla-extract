@@ -4,15 +4,15 @@ import { vars } from "@/styles/themes.css";
 export const container = style({
   display: "flex",
   flexDirection: "column",
-  marginBlock: vars.space.lg,
+  marginBlock: vars.space[0],
   backgroundColor: vars.colors.surfaceAlt,
   color: vars.colors.text,
   maxWidth: "100%",
 });
 
 export const wrapper = style({
-  paddingBlock: vars.space.sm,
-  marginBlock: vars.space.lg,
+  paddingBlock: vars.space[5],
+  marginBlock: vars.space[8],
   backgroundColor: vars.colors.surface,
   boxShadow: vars.boxShadow.lowElevation,
   "@media": {
@@ -25,15 +25,15 @@ export const wrapper = style({
 export const contentWrapper = style({
   marginLeft: "auto",
   marginRight: "auto",
-  paddingBottom: vars.space.xs,
-  paddingLeft: vars.space.sm,
-  paddingRight: vars.space.sm,
+  paddingBottom: vars.space["0.5"],
+  paddingLeft: vars.space[5],
+  paddingRight: vars.space[5],
   maxWidth: "100%",
   "@media": {
     "(min-width: 48rem)": {
       maxWidth: vars.widths.maxWidthText,
-      paddingLeft: vars.space.zero,
-      paddingRight: vars.space.zero,
+      paddingLeft: vars.space[0],
+      paddingRight: vars.space[0],
     },
   },
 });

@@ -8,7 +8,7 @@ const button = style({
   backgroundColor: "transparent",
   color: vars.colors.primary,
   marginLeft: "auto",
-  padding: vars.space.xs,
+  padding: vars.space[2],
   //   hover: vars.colours.secondary,
 });
 

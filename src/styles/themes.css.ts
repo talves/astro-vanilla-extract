@@ -18,9 +18,7 @@ export const vars = createThemeContract({
   },
   boxShadow: {
     lowElevation: "",
-    sm: ``,
-    md: ``,
-    lg: ``,
+    ...theme.boxShadow,
   },
   font: {
     body: ``,
@@ -46,13 +44,7 @@ export const vars = createThemeContract({
     relaxed: ``,
   },
   space: {
-    px: ``,
-    xs: ``,
-    sm: ``,
-    md: ``,
-    lg: ``,
-    xl: ``,
-    zero: ``,
+    ...theme.spacing,
   },
   radii: {
     sm: ``,
@@ -64,12 +56,6 @@ export const vars = createThemeContract({
     maxWidth3XL: ``,
   },
 });
-
-const commonBackShadow = {
-  sm: `0 1px 2px 0 rgb(0 0 0 / 0.05)`,
-  md: `0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)`,
-  lg: `0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)`,
-};
 
 const fallbackSansFonts = theme.fontFamily.sans.toString();
 
@@ -87,13 +73,7 @@ const commonVars = {
     maxWidth3XL: "48rem",
   },
   space: {
-    px: `1px`,
-    xs: `0.25rem`,
-    sm: `0.5rem`,
-    md: `1rem`,
-    lg: `1.5rem`,
-    xl: `2.5rem`,
-    zero: `0`,
+    ...theme.spacing,
   },
   fontSize: {
     xs: `0.8rem`,
@@ -155,7 +135,7 @@ export const lightThemeClass = createTheme(vars, {
     ...colors,
   },
   boxShadow: {
-    ...commonBackShadow,
+    ...theme.boxShadow,
     // CREDIT: https://www.joshwcomeau.com/shadow-palette/
     lowElevation: `-1px 1px 1.6px rgb(${lightShadowRGB.r} ${lightShadowRGB.g} ${lightShadowRGB.b} / 0.34), -1.7px 1.7px 2.7px -1.2px rgb(${lightShadowRGB.r} ${lightShadowRGB.g} ${lightShadowRGB.b} / 0.34), -4px 4px 6.4px -2.5px rgb(${lightShadowRGB.r} ${lightShadowRGB.g} ${lightShadowRGB.b} / 0.34)`,
   },
@@ -179,7 +159,7 @@ export const darkThemeClass = createTheme(vars, {
     ...colors,
   },
   boxShadow: {
-    ...commonBackShadow,
+    ...theme.boxShadow,
     // CREDIT: https://www.joshwcomeau.com/shadow-palette/
     lowElevation: `-1px 1px 1.4px rgb(${darkShadowRGB.r} ${darkShadowRGB.g} ${darkShadowRGB.b} / 0.48), -1.5px 1.5px 2.1px -1.7px rgb(${darkShadowRGB.r} ${darkShadowRGB.g} ${darkShadowRGB.b} / 0.39), -4px 4px 5.5px -3.5px rgb(${darkShadowRGB.r} ${darkShadowRGB.g} ${darkShadowRGB.b} / 0.3)`,
   },
