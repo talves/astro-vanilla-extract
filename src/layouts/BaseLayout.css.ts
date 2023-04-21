@@ -8,6 +8,7 @@ export const container = style({
   backgroundColor: vars.colors.surfaceAlt,
   color: vars.colors.text,
   maxWidth: "100%",
+  alignItems: "center",
 });
 
 export const wrapper = style({
