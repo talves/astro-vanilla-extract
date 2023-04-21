@@ -11,8 +11,8 @@ globalStyle("input, button, textarea, select", {
 
 globalStyle("h1, h2", {
   color: vars.colors.primary,
-  marginTop: vars.space.lg,
-  marginBottom: vars.space.md,
+  marginTop: vars.space[10],
+  marginBottom: vars.space[5],
   fontWeight: vars.fontWeight.normal,
   fontFamily: vars.fontFamily.heading,
   fontSize: vars.fontSize.xl,
@@ -20,12 +20,12 @@ globalStyle("h1, h2", {
 
 globalStyle("p", {
   lineHeight: vars.lineHeight.relaxed,
-  marginBottom: vars.space.sm,
+  marginBottom: vars.space[2],
 });
 
 globalStyle("a", {
   color: vars.colors.primary,
-  textUnderlineOffset: vars.space.xs,
+  textUnderlineOffset: vars.space[1],
 });
 
 globalStyle("a:hover, a:focus", {
@@ -35,15 +35,15 @@ globalStyle("a:hover, a:focus", {
 globalStyle("hr", {
   color: vars.colors.alternative,
   height: vars.space.px,
-  marginBlock: vars.space.xl,
+  marginBlock: vars.space[10],
 });
 
 globalStyle("ul", {
-  marginBottom: vars.space.lg,
+  marginBottom: vars.space[5],
 });
 
 globalStyle("ul li", {
-  marginBottom: vars.space.sm,
+  marginBottom: vars.space[3],
 });
 
 export const screenReaderText = style({
