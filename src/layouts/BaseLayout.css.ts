@@ -42,7 +42,7 @@ export const contentWrapper = style({
 export const intro = style({
   color: vars.colors.primary,
   fontFamily: vars.fontFamily.subheading,
-  fontSize: vars.fontSize.lg,
+  fontSize: vars.fontSize["2xl"],
 });
 
 export const footer = style({
@@ -51,4 +51,9 @@ export const footer = style({
       fontSize: vars.fontSize.lg,
     },
   },
+});
+
+export const headerSize = style({
+  fontSize: vars.fontSize["3xl"],
+  lineHeight: vars.fontSizeLineHeight["3xl"],
 });

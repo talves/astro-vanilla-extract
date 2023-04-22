@@ -11,11 +11,18 @@ globalStyle("input, button, textarea, select", {
 
 globalStyle("h1, h2", {
   color: vars.colors.primary,
-  marginTop: vars.space[10],
-  marginBottom: vars.space[5],
   fontWeight: vars.fontWeight.normal,
   fontFamily: vars.fontFamily.heading,
-  fontSize: vars.fontSize.xl,
+});
+
+globalStyle("h1", {
+  marginTop: vars.space[10],
+  marginBottom: vars.space[5],
+});
+
+globalStyle("h2", {
+  marginTop: vars.space[8],
+  marginBottom: vars.space[3],
 });
 
 globalStyle("p", {

@@ -1,4 +1,4 @@
-import { createTheme, createThemeContract } from "@vanilla-extract/css";
+import { createTheme, createThemeContract, style } from "@vanilla-extract/css";
 import { theme } from "./theme";
 import colors from "@/styles/colors";
 
@@ -29,11 +29,10 @@ export const vars = createThemeContract({
     body: ``,
   },
   fontSize: {
-    xs: ``,
-    sm: ``,
-    md: ``,
-    lg: ``,
-    xl: ``,
+    ...theme.fontSize,
+  },
+  fontSizeLineHeight: {
+    ...theme.fontSizeLineHeight,
   },
   fontWeight: {
     normal: ``,
@@ -76,11 +75,10 @@ const commonVars = {
     ...theme.spacing,
   },
   fontSize: {
-    xs: `0.8rem`,
-    sm: `0.875rem`,
-    md: `1rem`,
-    lg: `1.25rem`,
-    xl: `1.5rem`,
+    ...theme.fontSize,
+  },
+  fontSizeLineHeight: {
+    ...theme.fontSizeLineHeight,
   },
   fontWeight: {
     normal: "400",
