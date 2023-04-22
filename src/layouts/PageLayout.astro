@@ -18,8 +18,9 @@ const { title } = Astro.props as Props;
 <div class:list={[container]}>
   <div class:list={[wrapper]}>
     <main class:list={[contentWrapper]}>
-      <h1 class:list={[headerSize]}>{title}</h1>
+      <h1>{title}</h1>
       <p class:list={[intro]}>Here&rsquo;s the latest theme&hellip;</p>
+      <h2>SubTitle Here</h2>
       <hr />
       <slot />
     </main>

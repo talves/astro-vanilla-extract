@@ -18,11 +18,15 @@ globalStyle("h1, h2", {
 globalStyle("h1", {
   marginTop: vars.space[10],
   marginBottom: vars.space[5],
+  fontSize: vars.fontSize["3xl"],
+  lineHeight: vars.fontSizeLineHeight["3xl"],
 });
 
 globalStyle("h2", {
   marginTop: vars.space[8],
   marginBottom: vars.space[3],
+  fontSize: vars.fontSize["2xl"],
+  lineHeight: vars.fontSizeLineHeight["2xl"],
 });
 
 globalStyle("p", {
