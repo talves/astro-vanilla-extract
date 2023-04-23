@@ -41,6 +41,7 @@ globalStyle("a", {
 
 globalStyle("a:hover, a:focus", {
   textDecoration: "none",
+  color: vars.colors.alternative,
 });
 
 globalStyle("hr", {

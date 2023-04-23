@@ -1,5 +1,15 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/styles/themes.css";
+import { sprinklesTailwind } from "@/styles/sprinkles.css";
+
+export const mainContainer = sprinklesTailwind({
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
+  backgroundColor: "transparent",
+  height: "screen",
+});
 
 export const container = style({
   display: "flex",

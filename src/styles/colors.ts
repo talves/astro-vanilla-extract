@@ -1,4 +1,12 @@
-export default {
+const buildColorVariants = (obj: Record<string, string>, prefix: string) => {
+  const returnObject: Record<string, string> = {};
+  for (const property in obj) {
+    returnObject[`${prefix}-${property}`] = obj[property];
+  }
+  return returnObject;
+};
+
+const colors = {
   inherit: "inherit",
   current: "currentColor",
   transparent: "transparent",
@@ -291,3 +299,35 @@ export default {
     950: "#4c0519",
   },
 };
+
+const flatColors: Record<string, string> = {
+  inherit: "inherit",
+  current: "currentColor",
+  transparent: "transparent",
+  black: "#000",
+  white: "#fff",
+  ...buildColorVariants(colors.amber, "amber"),
+  ...buildColorVariants(colors.blue, "blue"),
+  ...buildColorVariants(colors.cyan, "cyan"),
+  ...buildColorVariants(colors.emerald, "emerald"),
+  ...buildColorVariants(colors.fuchsia, "fuchsia"),
+  ...buildColorVariants(colors.gray, "gray"),
+  ...buildColorVariants(colors.green, "green"),
+  ...buildColorVariants(colors.indigo, "indigo"),
+  ...buildColorVariants(colors.lime, "lime"),
+  ...buildColorVariants(colors.neutral, "neutral"),
+  ...buildColorVariants(colors.orange, "orange"),
+  ...buildColorVariants(colors.pink, "pink"),
+  ...buildColorVariants(colors.purple, "purple"),
+  ...buildColorVariants(colors.red, "red"),
+  ...buildColorVariants(colors.rose, "rose"),
+  ...buildColorVariants(colors.sky, "sky"),
+  ...buildColorVariants(colors.slate, "slate"),
+  ...buildColorVariants(colors.stone, "stone"),
+  ...buildColorVariants(colors.teal, "teal"),
+  ...buildColorVariants(colors.violet, "violet"),
+  ...buildColorVariants(colors.yellow, "yellow"),
+  ...buildColorVariants(colors.zinc, "zinc"),
+};
+
+export default colors;

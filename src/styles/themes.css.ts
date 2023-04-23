@@ -1,6 +1,6 @@
 import { createTheme, createThemeContract, style } from "@vanilla-extract/css";
-import { theme } from "./theme";
-import colors from "@/styles/colors";
+import { theme } from "./theme-default";
+import colors from "@/styles/colors.css";
 
 export const vars = createThemeContract({
   colors: {
@@ -116,20 +116,20 @@ function hexToRgb(hex: string) {
       };
 }
 
-const lightShadowRGB = hexToRgb(colors.slate["400"]);
+const lightShadowRGB = hexToRgb(colors["slate-400"]);
 
 export const lightThemeClass = createTheme(vars, {
   colors: {
-    primary: colors.indigo["900"],
-    secondary: colors.orange["500"],
-    alternative: colors.sky["500"],
-    text: colors.stone["800"],
-    surface: colors.slate["50"],
-    surfaceAlt: colors.slate["200"],
-    body: colors.gray["700"],
-    background: colors.gray["100"],
-    link: colors.blue["800"],
-    linkHover: colors.blue["600"],
+    primary: colors["indigo-900"],
+    secondary: colors["orange-500"],
+    alternative: colors["sky-500"],
+    text: colors["stone-800"],
+    surface: colors["slate-50"],
+    surfaceAlt: colors["slate-200"],
+    body: colors["gray-700"],
+    background: colors["slate-200"],
+    link: colors["blue-800"],
+    linkHover: colors["blue-600"],
     ...colors,
   },
   boxShadow: {
@@ -140,20 +140,20 @@ export const lightThemeClass = createTheme(vars, {
   ...commonVars,
 });
 
-const darkShadowRGB = hexToRgb(colors.stone["800"]);
+const darkShadowRGB = hexToRgb(colors["stone-800"]);
 
 export const darkThemeClass = createTheme(vars, {
   colors: {
-    primary: colors.slate["300"],
-    secondary: colors.stone["800"],
-    alternative: colors.orange["500"],
-    text: colors.slate["200"],
-    surface: colors.stone["800"],
-    surfaceAlt: colors.stone["700"],
-    body: colors.gray["300"],
-    background: colors.gray["800"],
-    link: colors.blue["200"],
-    linkHover: colors.blue["400"],
+    primary: colors["slate-300"],
+    secondary: colors["stone-800"],
+    alternative: colors["orange-500"],
+    text: colors["slate-200"],
+    surface: colors["stone-800"],
+    surfaceAlt: colors["stone-700"],
+    body: colors["gray-300"],
+    background: colors["stone-700"],
+    link: colors["blue-200"],
+    linkHover: colors["blue-400"],
     ...colors,
   },
   boxShadow: {

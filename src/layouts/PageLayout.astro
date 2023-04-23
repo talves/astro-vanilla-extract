@@ -1,5 +1,6 @@
 ---
 import {
+  mainContainer,
   container,
   contentWrapper,
   footer,
@@ -15,7 +16,7 @@ export interface Props {
 const { title } = Astro.props as Props;
 ---
 
-<div class:list={[container]}>
+<div class:list={[mainContainer]}>
   <div class:list={[wrapper]}>
     <main class:list={[contentWrapper]}>
       <h1>{title}</h1>

@@ -3,6 +3,7 @@ import "@/styles/fonts.css";
 import "@/styles/preflight.css";
 import "@/styles/global.css";
 import { lightThemeClass } from "@/styles/themes.css";
+import { container } from "@/layouts/BaseLayout.css";
 
 export interface Props {
   description: string;
@@ -22,7 +23,7 @@ const { description, title } = Astro.props as Props;
   <title>{title}</title>
   <meta name="description" content={description} />
 
-  <body class:list={[lightThemeClass]}>
+  <body class:list={[lightThemeClass, container]}>
     <slot />
   </body>
 </html>
