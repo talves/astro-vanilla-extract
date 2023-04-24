@@ -34,18 +34,175 @@ type Colors = {
   };
 };
 
-type ThemeProps = {
-  theme: (key: string, opt?: string) => any;
+type FontSize = {
+  xs: string;
+  sm: string;
+  base: string;
+  lg: string;
+  xl: string;
+  "2xl": string;
+  "3xl": string;
+  "4xl": string;
+  "5xl": string;
+  "6xl": string;
+  "7xl": string;
+  "8xl": string;
+  "9xl": string;
 };
-type ThemeBreakpointProps = {
-  theme: (key: string, opt?: string) => any;
-  breakpoints: (props?: any) => any;
-};
-type ThemeFunc = (props: ThemeProps) => void;
 
-export const theme = {
-  accentColor: ({ theme }: ThemeProps): ThemeFunc => ({
-    ...theme("colors"),
+type ThemeProps = {
+  theme: Theme;
+};
+
+type AnyRecord = Record<any, string>;
+type FlattenedRecord = Record<string, string | null>;
+type ThemeFunc<T> = (props: T) => AnyRecord;
+
+type Theme = {
+  accentColor: ThemeFunc<ThemeProps>;
+  animation: AnyRecord;
+  aria: AnyRecord;
+  aspectRatio: AnyRecord;
+  backdropBlur: ThemeFunc<ThemeProps>;
+  backdropBrightness: ThemeFunc<ThemeProps>;
+  backdropContrast: ThemeFunc<ThemeProps>;
+  backdropGrayscale: ThemeFunc<ThemeProps>;
+  backdropHueRotate: ThemeFunc<ThemeProps>;
+  backdropInvert: ThemeFunc<ThemeProps>;
+  backdropOpacity: ThemeFunc<ThemeProps>;
+  backdropSaturate: ThemeFunc<ThemeProps>;
+  backdropSepia: ThemeFunc<ThemeProps>;
+  backgroundColor: ThemeFunc<AnyRecord>;
+  backgroundImage: AnyRecord;
+  backgroundOpacity: ThemeFunc<ThemeProps>;
+  backgroundPosition: AnyRecord;
+  backgroundSize: AnyRecord;
+  blur: AnyRecord;
+  borderColor: ThemeFunc<AnyRecord>;
+  borderOpacity: ThemeFunc<ThemeProps>;
+  borderRadius: AnyRecord;
+  borderSpacing: ThemeFunc<ThemeProps>;
+  borderWidth: AnyRecord;
+  boxShadow: AnyRecord;
+  boxShadowColor: ThemeFunc<AnyRecord>;
+  brightness: AnyRecord;
+  caretColor: ThemeFunc<AnyRecord>;
+  colors: ThemeFunc<AnyRecord>;
+  columns: AnyRecord;
+  container: AnyRecord;
+  content: AnyRecord;
+  contrast: AnyRecord;
+  cursor: AnyRecord;
+  divideColor: ThemeFunc<AnyRecord>;
+  divideOpacity: ThemeFunc<ThemeProps>;
+  divideWidth: ThemeFunc<ThemeProps>;
+  dropShadow: AnyRecord | Record<string, string | string[]>;
+  fill: ThemeFunc<ThemeProps>;
+  flex: AnyRecord;
+  flexBasis: ThemeFunc<ThemeProps>;
+  flexGrow: AnyRecord;
+  flexShrink: AnyRecord;
+  fontFamily: AnyRecord | Record<string, string[]>;
+  fontSize: FontSize;
+  fontSizeLineHeight: AnyRecord;
+  fontWeight: AnyRecord;
+  gap: ThemeFunc<ThemeProps>;
+  gradientColorStops: ThemeFunc<AnyRecord>;
+  gradientColorStopPositions: AnyRecord;
+  grayscale: AnyRecord;
+  gridAutoColumns: AnyRecord;
+  gridAutoRows: AnyRecord;
+  gridColumn: AnyRecord;
+  gridColumnEnd: AnyRecord;
+  gridColumnStart: AnyRecord;
+  gridRow: AnyRecord;
+  gridRowEnd: AnyRecord;
+  gridRowStart: AnyRecord;
+  gridTemplateColumns: AnyRecord;
+  gridTemplateRows: AnyRecord;
+  height: ThemeFunc<ThemeProps>;
+  hueRotate: AnyRecord;
+  inset: ThemeFunc<ThemeProps>;
+  invert: AnyRecord;
+  keyframes: AnyRecord;
+  letterSpacing: AnyRecord;
+  lineHeight: AnyRecord;
+  listStyleType: AnyRecord;
+  listStyleImage: AnyRecord;
+  margin: ThemeFunc<ThemeProps>;
+  lineClamp: AnyRecord;
+  maxHeight: ThemeFunc<ThemeProps>;
+  maxWidth: ThemeFunc<ThemeProps>;
+  minHeight: AnyRecord;
+  minWidth: AnyRecord;
+  objectPosition: AnyRecord;
+  opacity: AnyRecord;
+  order: AnyRecord;
+  outlineColor: ThemeFunc<AnyRecord>;
+  outlineOffset: AnyRecord;
+  outlineWidth: AnyRecord;
+  padding: ThemeFunc<ThemeProps>;
+  placeholderColor: ThemeFunc<AnyRecord>;
+  placeholderOpacity: ThemeFunc<ThemeProps>;
+  ringColor: ThemeFunc<AnyRecord>;
+  ringOffsetColor: ThemeFunc<AnyRecord>;
+  ringOffsetWidth: AnyRecord;
+  ringOpacity: ThemeFunc<ThemeProps>;
+  ringWidth: AnyRecord;
+  rotate: AnyRecord;
+  saturate: AnyRecord;
+  scale: AnyRecord;
+  screens: AnyRecord;
+  scrollMargin: ThemeFunc<ThemeProps>;
+  scrollPadding: ThemeFunc<ThemeProps>;
+  sepia: AnyRecord;
+  skew: AnyRecord;
+  space: ThemeFunc<ThemeProps>;
+  spacing: AnyRecord;
+  stroke: ThemeFunc<ThemeProps>;
+  strokeWidth: AnyRecord;
+  supports: AnyRecord;
+  data: AnyRecord;
+  textColor: ThemeFunc<AnyRecord>;
+  textDecorationColor: ThemeFunc<AnyRecord>;
+  textDecorationThickness: AnyRecord;
+  textIndent: ThemeFunc<ThemeProps>;
+  textOpacity: ThemeFunc<ThemeProps>;
+  textUnderlineOffset: AnyRecord;
+  transformOrigin: AnyRecord;
+  transitionDelay: AnyRecord;
+  transitionDuration: AnyRecord;
+  transitionProperty: AnyRecord;
+  transitionTimingFunction: AnyRecord;
+  translate: ThemeFunc<ThemeProps>;
+  width: ThemeFunc<ThemeProps>;
+  willChange: AnyRecord;
+  zIndex: AnyRecord;
+};
+
+export const flatten = (
+  items: AnyRecord,
+  val: string = ""
+): FlattenedRecord => {
+  const returnVal: Record<any, any> = {};
+  const keys = Object.keys(items);
+  keys.forEach((element) => {
+    returnVal[`${element}`] = `${val}`;
+  });
+  return returnVal;
+};
+const breakpoints = (screens: typeof theme.screens, prefix: string) => {
+  const returnVal: Record<any, any> = {};
+  const keys = Object.keys(screens);
+  keys.forEach((element) => {
+    returnVal[`${prefix}-${element}`] = screens[element];
+  });
+  return returnVal;
+};
+
+export const theme: Theme = {
+  accentColor: ({ theme }: ThemeProps) => ({
+    ...theme.colors,
     auto: "auto",
   }),
   animation: {
@@ -70,16 +227,16 @@ export const theme = {
     square: "1 / 1",
     video: "16 / 9",
   },
-  backdropBlur: ({ theme }: ThemeProps) => theme("blur"),
-  backdropBrightness: ({ theme }: ThemeProps) => theme("brightness"),
-  backdropContrast: ({ theme }: ThemeProps) => theme("contrast"),
-  backdropGrayscale: ({ theme }: ThemeProps) => theme("grayscale"),
-  backdropHueRotate: ({ theme }: ThemeProps) => theme("hueRotate"),
-  backdropInvert: ({ theme }: ThemeProps) => theme("invert"),
-  backdropOpacity: ({ theme }: ThemeProps) => theme("opacity"),
-  backdropSaturate: ({ theme }: ThemeProps) => theme("saturate"),
-  backdropSepia: ({ theme }: ThemeProps) => theme("sepia"),
-  backgroundColor: ({ theme }: ThemeProps) => theme("colors"),
+  backdropBlur: ({ theme }: ThemeProps) => theme.blur,
+  backdropBrightness: ({ theme }: ThemeProps) => theme.brightness,
+  backdropContrast: ({ theme }: ThemeProps) => theme.contrast,
+  backdropGrayscale: ({ theme }: ThemeProps) => theme.grayscale,
+  backdropHueRotate: ({ theme }: ThemeProps) => theme.hueRotate,
+  backdropInvert: ({ theme }: ThemeProps) => theme.invert,
+  backdropOpacity: ({ theme }: ThemeProps) => theme.opacity,
+  backdropSaturate: ({ theme }: ThemeProps) => theme.saturate,
+  backdropSepia: ({ theme }: ThemeProps) => theme.sepia,
+  backgroundColor: (colors) => colors,
   backgroundImage: {
     none: "none",
     "gradient-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
@@ -93,7 +250,7 @@ export const theme = {
     "gradient-to-l": "linear-gradient(to left, var(--tw-gradient-stops))",
     "gradient-to-tl": "linear-gradient(to top left, var(--tw-gradient-stops))",
   },
-  backgroundOpacity: ({ theme }: ThemeProps) => theme("opacity"),
+  backgroundOpacity: ({ theme }: ThemeProps) => theme.opacity,
   backgroundPosition: {
     bottom: "bottom",
     center: "center",
@@ -121,11 +278,11 @@ export const theme = {
     "2xl": "40px",
     "3xl": "64px",
   },
-  borderColor: ({ theme }: ThemeProps) => ({
-    ...theme("colors"),
-    DEFAULT: theme("colors.gray.200", "currentColor"),
+  borderColor: (colors) => ({
+    ...colors,
+    DEFAULT: colors["gray-200"] || "currentColor",
   }),
-  borderOpacity: ({ theme }: ThemeProps) => theme("opacity"),
+  borderOpacity: ({ theme }: ThemeProps) => theme.opacity,
   borderRadius: {
     none: "0px",
     sm: "0.125rem",
@@ -138,7 +295,7 @@ export const theme = {
     full: "9999px",
   },
   borderSpacing: ({ theme }: ThemeProps) => ({
-    ...theme("spacing"),
+    ...theme.spacing,
   }),
   borderWidth: {
     DEFAULT: "1px",
@@ -157,7 +314,7 @@ export const theme = {
     inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
     none: "none",
   },
-  boxShadowColor: ({ theme }: ThemeProps) => theme("colors"),
+  boxShadowColor: (colors) => colors,
   brightness: {
     0: "0",
     50: ".5",
@@ -171,8 +328,8 @@ export const theme = {
     150: "1.5",
     200: "2",
   },
-  caretColor: ({ theme }: ThemeProps) => theme("colors"),
-  colors: ({ colors }: Colors) => ({
+  caretColor: (colors) => colors,
+  colors: (colors) => ({
     inherit: colors.inherit,
     current: colors.current,
     transparent: colors.transparent,
@@ -280,9 +437,9 @@ export const theme = {
     "zoom-in": "zoom-in",
     "zoom-out": "zoom-out",
   },
-  divideColor: ({ theme }: ThemeProps) => theme("borderColor"),
-  divideOpacity: ({ theme }: ThemeProps) => theme("borderOpacity"),
-  divideWidth: ({ theme }: ThemeProps) => theme("borderWidth"),
+  divideColor: (colors) => theme.borderColor(colors),
+  divideOpacity: ({ theme }: ThemeProps) => theme.borderOpacity({ theme }),
+  divideWidth: ({ theme }: ThemeProps) => theme.borderWidth,
   dropShadow: {
     sm: "0 1px 1px rgb(0 0 0 / 0.05)",
     DEFAULT: ["0 1px 2px rgb(0 0 0 / 0.1)", "0 1px 1px rgb(0 0 0 / 0.06)"],
@@ -294,7 +451,7 @@ export const theme = {
   },
   fill: ({ theme }: ThemeProps) => ({
     none: "none",
-    ...theme("colors"),
+    ...theme.colors,
   }),
   flex: {
     1: "1 1 0%",
@@ -304,7 +461,7 @@ export const theme = {
   },
   flexBasis: ({ theme }: ThemeProps) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme.spacing,
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -418,8 +575,8 @@ export const theme = {
     extrabold: "800",
     black: "900",
   },
-  gap: ({ theme }: ThemeProps) => theme("spacing"),
-  gradientColorStops: ({ theme }: ThemeProps) => theme("colors"),
+  gap: ({ theme }: ThemeProps) => theme.spacing,
+  gradientColorStops: (colors) => colors,
   gradientColorStopPositions: {
     "0%": "0%",
     "5%": "5%",
@@ -563,7 +720,7 @@ export const theme = {
   },
   height: ({ theme }: ThemeProps) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme.spacing,
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -595,7 +752,7 @@ export const theme = {
   },
   inset: ({ theme }: ThemeProps) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme.spacing,
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -609,32 +766,32 @@ export const theme = {
     DEFAULT: "100%",
   },
   keyframes: {
-    spin: {
-      to: {
-        transform: "rotate(360deg)",
-      },
-    },
-    ping: {
-      "75%, 100%": {
-        transform: "scale(2)",
-        opacity: "0",
-      },
-    },
-    pulse: {
-      "50%": {
-        opacity: ".5",
-      },
-    },
-    bounce: {
-      "0%, 100%": {
-        transform: "translateY(-25%)",
-        animationTimingFunction: "cubic-bezier(0.8,0,1,1)",
-      },
-      "50%": {
-        transform: "none",
-        animationTimingFunction: "cubic-bezier(0,0,0.2,1)",
-      },
-    },
+    // spin: {
+    //   to: {
+    //     transform: "rotate(360deg)",
+    //   },
+    // },
+    // ping: {
+    //   "75%, 100%": {
+    //     transform: "scale(2)",
+    //     opacity: "0",
+    //   },
+    // },
+    // pulse: {
+    //   "50%": {
+    //     opacity: ".5",
+    //   },
+    // },
+    // bounce: {
+    //   "0%, 100%": {
+    //     transform: "translateY(-25%)",
+    //     animationTimingFunction: "cubic-bezier(0.8,0,1,1)",
+    //   },
+    //   "50%": {
+    //     transform: "none",
+    //     animationTimingFunction: "cubic-bezier(0,0,0.2,1)",
+    //   },
+    // },
   },
   letterSpacing: {
     tighter: "-0.05em",
@@ -670,7 +827,7 @@ export const theme = {
   },
   margin: ({ theme }: ThemeProps) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme.spacing,
   }),
   lineClamp: {
     1: "1",
@@ -680,8 +837,8 @@ export const theme = {
     5: "5",
     6: "6",
   },
-  maxHeight: ({ theme }: ThemeProps) => ({
-    ...theme("spacing"),
+  maxHeight: ({ theme }) => ({
+    ...theme.spacing,
     none: "none",
     full: "100%",
     screen: "100vh",
@@ -689,7 +846,7 @@ export const theme = {
     max: "max-content",
     fit: "fit-content",
   }),
-  maxWidth: ({ theme, breakpoints }: ThemeBreakpointProps) => ({
+  maxWidth: ({ theme }) => ({
     none: "none",
     0: "0rem",
     xs: "20rem",
@@ -708,7 +865,7 @@ export const theme = {
     max: "max-content",
     fit: "fit-content",
     prose: "65ch",
-    ...breakpoints(theme("screens")),
+    ...breakpoints(theme.screens, "max-w"),
   }),
   minHeight: {
     0: "0px",
@@ -770,7 +927,7 @@ export const theme = {
     11: "11",
     12: "12",
   },
-  outlineColor: ({ theme }: ThemeProps) => theme("colors"),
+  outlineColor: (colors) => colors,
   outlineOffset: {
     0: "0px",
     1: "1px",
@@ -785,14 +942,14 @@ export const theme = {
     4: "4px",
     8: "8px",
   },
-  padding: ({ theme }: ThemeProps) => theme("spacing"),
-  placeholderColor: ({ theme }: ThemeProps) => theme("colors"),
-  placeholderOpacity: ({ theme }: ThemeProps) => theme("opacity"),
-  ringColor: ({ theme }: ThemeProps) => ({
-    DEFAULT: theme("colors.blue.500", "#3b82f6"),
-    ...theme("colors"),
+  padding: ({ theme }: ThemeProps) => theme.spacing,
+  placeholderColor: (colors) => colors,
+  placeholderOpacity: ({ theme }: ThemeProps) => theme.opacity,
+  ringColor: (colors) => ({
+    DEFAULT: colors["blue-100"] || "#3b82f6",
+    ...colors,
   }),
-  ringOffsetColor: ({ theme }: ThemeProps) => theme("colors"),
+  ringOffsetColor: (colors) => colors,
   ringOffsetWidth: {
     0: "0px",
     1: "1px",
@@ -802,7 +959,7 @@ export const theme = {
   },
   ringOpacity: ({ theme }: ThemeProps) => ({
     DEFAULT: "0.5",
-    ...theme("opacity"),
+    ...theme.opacity,
   }),
   ringWidth: {
     DEFAULT: "3px",
@@ -850,9 +1007,9 @@ export const theme = {
     "2xl": "1536px",
   },
   scrollMargin: ({ theme }: ThemeProps) => ({
-    ...theme("spacing"),
+    ...theme.spacing,
   }),
-  scrollPadding: ({ theme }: ThemeProps) => theme("spacing"),
+  scrollPadding: ({ theme }: ThemeProps) => theme.spacing,
   sepia: {
     0: "0",
     DEFAULT: "100%",
@@ -866,7 +1023,7 @@ export const theme = {
     12: "12deg",
   },
   space: ({ theme }: ThemeProps) => ({
-    ...theme("spacing"),
+    ...theme.spacing,
   }),
   spacing: {
     px: "1px",
@@ -907,7 +1064,7 @@ export const theme = {
   },
   stroke: ({ theme }: ThemeProps) => ({
     none: "none",
-    ...theme("colors"),
+    ...theme.colors,
   }),
   strokeWidth: {
     0: "0",
@@ -916,8 +1073,8 @@ export const theme = {
   },
   supports: {},
   data: {},
-  textColor: ({ theme }: ThemeProps) => theme("colors"),
-  textDecorationColor: ({ theme }: ThemeProps) => theme("colors"),
+  textColor: (colors) => colors,
+  textDecorationColor: (colors) => colors,
   textDecorationThickness: {
     auto: "auto",
     "from-font": "from-font",
@@ -928,9 +1085,9 @@ export const theme = {
     8: "8px",
   },
   textIndent: ({ theme }: ThemeProps) => ({
-    ...theme("spacing"),
+    ...theme.spacing,
   }),
-  textOpacity: ({ theme }: ThemeProps) => theme("opacity"),
+  textOpacity: ({ theme }: ThemeProps) => theme.opacity,
   textUnderlineOffset: {
     auto: "auto",
     0: "0px",
@@ -992,7 +1149,7 @@ export const theme = {
     "in-out": "cubic-bezier(0.4, 0, 0.2, 1)",
   },
   translate: ({ theme }: ThemeProps) => ({
-    ...theme("spacing"),
+    ...theme.spacing,
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -1003,7 +1160,7 @@ export const theme = {
   }),
   width: ({ theme }: ThemeProps) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme.spacing,
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",

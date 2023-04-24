@@ -2,12 +2,7 @@ import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 import { vars } from "@/styles/themes.css";
 
 const palette = vars.colors;
-import {
-  fontFamily,
-  fontWeight,
-  lineHeight,
-  fontSize,
-} from "@/styles/typography.css";
+import { fontFamily, fontWeight, lineHeight } from "@/styles/typography.css";
 import { size, space, position } from "@/styles/size.css";
 import { borderSize, borderRadius, shadows } from "@/styles/border.css";
 import { style } from "@vanilla-extract/css";
@@ -55,6 +50,7 @@ const responsiveProperties = defineProperties({
     bottom: position,
     right: position,
     objectFit: ["contain", "cover", "fill", "none", "scale-down"],
+    fontSize: vars.fontSize,
   },
   shorthands: {
     p: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
@@ -80,7 +76,7 @@ const systemProperties = defineProperties({
     backgroundColor: palette,
     borderColor: palette,
     fontFamily: fontFamily,
-    fontSize: fontSize,
+    // fontSize: vars.fontSize,
     fontWeight: fontWeight,
     lineHeight: lineHeight,
     borderRadius: borderRadius,

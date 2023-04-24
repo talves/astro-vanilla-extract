@@ -1,5 +1,5 @@
 import { createTheme, createThemeContract, style } from "@vanilla-extract/css";
-import { theme } from "./theme-default";
+import { theme, flatten } from "@/styles/theme-default";
 import colors from "@/styles/colors.css";
 
 export const vars = createThemeContract({
@@ -28,23 +28,16 @@ export const vars = createThemeContract({
     subheading: ``,
     body: ``,
   },
-  fontSize: {
-    ...theme.fontSize,
-  },
+  fontSize: { ...flatten(theme.fontSize) },
   fontSizeLineHeight: {
-    ...theme.fontSizeLineHeight,
+    ...flatten(theme.fontSizeLineHeight),
   },
-  fontWeight: {
-    normal: ``,
-    bold: ``,
-  },
-  lineHeight: {
-    normal: ``,
-    relaxed: ``,
-  },
-  space: {
-    ...theme.spacing,
-  },
+  fontWeight: { ...flatten(theme.fontWeight) },
+  lineHeight: flatten(theme.lineHeight),
+  fontStyle: { italic: "italic", "not-italic": "normal" },
+  letterSpacing: flatten(theme.letterSpacing),
+  maxHeight: flatten(theme.maxHeight({ theme })),
+  space: flatten(theme.spacing),
   radii: {
     sm: ``,
     md: ``,
@@ -56,7 +49,7 @@ export const vars = createThemeContract({
   },
 });
 
-const fallbackSansFonts = theme.fontFamily.sans.toString();
+const fallbackSansFonts = theme.fontFamily.sans?.toString() || "";
 
 const commonVars = {
   font: {
@@ -80,14 +73,11 @@ const commonVars = {
   fontSizeLineHeight: {
     ...theme.fontSizeLineHeight,
   },
-  fontWeight: {
-    normal: "400",
-    bold: "700",
-  },
-  lineHeight: {
-    normal: "1.5",
-    relaxed: "1.75",
-  },
+  fontWeight: { ...theme.fontWeight },
+  lineHeight: { ...theme.lineHeight },
+  letterSpacing: { ...theme.letterSpacing },
+  fontStyle: { italic: "italic", "not-italic": "normal" },
+  maxHeight: { ...theme.maxHeight({ theme }) },
   radii: {
     sm: `0.2rem`,
     md: `0.4rem`,

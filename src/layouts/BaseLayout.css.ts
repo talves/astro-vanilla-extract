@@ -9,6 +9,9 @@ export const mainContainer = sprinklesTailwind({
   alignItems: "center",
   backgroundColor: "transparent",
   height: "screen",
+  fontSize: {
+    mobile: "xs",
+  },
 });
 
 export const container = style({

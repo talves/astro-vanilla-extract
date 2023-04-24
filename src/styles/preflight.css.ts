@@ -4,7 +4,6 @@ import { theme } from "@/styles/theme-default";
 /*
 Adopted from Tailwind preflight: https://github.com/tailwindlabs/tailwindcss/blob/master/src/css/preflight.css
 */
-
 globalStyle("*, ::before, ::after", {
   boxSizing: "border-box",
   borderWidth: 0,
