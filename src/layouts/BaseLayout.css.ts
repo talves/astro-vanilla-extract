@@ -9,9 +9,17 @@ export const mainContainer = sprinklesTailwind({
   alignItems: "center",
   backgroundColor: "transparent",
   height: "screen",
-  fontSize: {
-    mobile: "xs",
+  // fontSize: {
+  //   desktop: "4xl",
+  //   mobile: "base",
+  //   tablet: "2xl",
+  // },
+  text: {
+    desktop: "4xl",
+    mobile: "base",
+    tablet: "2xl",
   },
+  flex: "1",
 });
 
 export const container = style({

@@ -51,6 +51,7 @@ const responsiveProperties = defineProperties({
     right: position,
     objectFit: ["contain", "cover", "fill", "none", "scale-down"],
     fontSize: vars.fontSize,
+    lineHeight: vars.fontSizeLineHeight,
   },
   shorthands: {
     p: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
@@ -62,6 +63,7 @@ const responsiveProperties = defineProperties({
     marginY: ["marginTop", "marginBottom"],
     placeItems: ["justifyContent", "alignItems"],
     inset: ["top", "left", "right", "bottom"],
+    text: ["fontSize", "lineHeight"],
   },
 });
 
@@ -78,7 +80,7 @@ const systemProperties = defineProperties({
     fontFamily: fontFamily,
     // fontSize: vars.fontSize,
     fontWeight: fontWeight,
-    lineHeight: lineHeight,
+    // lineHeight: lineHeight,
     borderRadius: borderRadius,
     borderTopWidth: borderSize,
     borderLeftWidth: borderSize,

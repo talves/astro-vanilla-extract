@@ -28,7 +28,7 @@ export const vars = createThemeContract({
     subheading: ``,
     body: ``,
   },
-  fontSize: { ...flatten(theme.fontSize) },
+  fontSize: theme.fontSize,
   fontSizeLineHeight: {
     ...flatten(theme.fontSizeLineHeight),
   },

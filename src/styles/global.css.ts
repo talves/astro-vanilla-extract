@@ -30,7 +30,7 @@ globalStyle("h2", {
 });
 
 globalStyle("p", {
-  lineHeight: vars.lineHeight.relaxed,
+  // lineHeight: vars.lineHeight.relaxed,
   marginBottom: vars.space[2],
 });
 
