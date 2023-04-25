@@ -818,7 +818,7 @@ type Theme = {
   letterSpacing: LetterSpacing;
   lineHeight: LineHeight;
   listStyleType: ListStyleType;
-  listStyleImage: AnyRecord;
+  listStyleImage: ListStyleImage;
   margin: ThemeFunc<ThemeProps, Margin>;
   lineClamp: LineClamp;
   maxHeight: ThemeFunc<ThemeProps, MaxHeight>;
