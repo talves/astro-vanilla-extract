@@ -251,37 +251,71 @@ type Colors = {
   "zinc-900": "#18181b";
   "zinc-950": "#09090b";
 };
-
-type FontSize = {
-  xs: string;
-  sm: string;
-  base: string;
-  lg: string;
-  xl: string;
-  "2xl": string;
-  "3xl": string;
-  "4xl": string;
-  "5xl": string;
-  "6xl": string;
-  "7xl": string;
-  "8xl": string;
-  "9xl": string;
+interface OutlineColor extends Colors {}
+interface PlaceholderColor extends Colors {}
+interface RingOffsetColors extends Colors {}
+interface GradientColorStops extends Colors {}
+interface TextColor extends Colors {}
+interface TextDecorationColor extends Colors {}
+interface Stroke extends Colors {
+  none: string;
+}
+type StrokeWidth = Record<"0" | "1" | "2", string>;
+type AspectRatio = Record<"auto" | "square" | "video", string>;
+type BackgroundImage = {
+  none: string;
+  "gradient-to-t": string;
+  "gradient-to-tr": string;
+  "gradient-to-r": string;
+  "gradient-to-br": string;
+  "gradient-to-b": string;
+  "gradient-to-bl": string;
+  "gradient-to-l": string;
+  "gradient-to-tl": string;
 };
-type FontSizeLineHeight = {
-  xs: string;
-  sm: string;
-  base: string;
-  lg: string;
-  xl: string;
-  "2xl": string;
-  "3xl": string;
-  "4xl": string;
-  "5xl": string;
-  "6xl": string;
-  "7xl": string;
-  "8xl": string;
-  "9xl": string;
+type BackgroundPosition = {
+  bottom: "bottom";
+  center: "center";
+  left: "left";
+  "left-bottom": "left bottom";
+  "left-top": "left top";
+  right: "right";
+  "right-bottom": "right bottom";
+  "right-top": "right top";
+  top: "top";
 };
+type FontSize = Record<
+  | "xs"
+  | "sm"
+  | "base"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "6xl"
+  | "7xl"
+  | "8xl"
+  | "9xl",
+  string
+>;
+type FontSizeLineHeight = Record<
+  | "xs"
+  | "sm"
+  | "base"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "6xl"
+  | "7xl"
+  | "8xl"
+  | "9xl",
+  string
+>;
 type FontWeight = {
   thin: string;
   extralight: string;
@@ -299,43 +333,48 @@ type Flex = {
   initial: string;
   none: string;
 };
-type Spacing = {
-  px: "1px";
-  0: "0px";
-  0.5: "0.125rem";
-  1: "0.25rem";
-  1.5: "0.375rem";
-  2: "0.5rem";
-  2.5: "0.625rem";
-  3: "0.75rem";
-  3.5: "0.875rem";
-  4: "1rem";
-  5: "1.25rem";
-  6: "1.5rem";
-  7: "1.75rem";
-  8: "2rem";
-  9: "2.25rem";
-  10: "2.5rem";
-  11: "2.75rem";
-  12: "3rem";
-  14: "3.5rem";
-  16: "4rem";
-  20: "5rem";
-  24: "6rem";
-  28: "7rem";
-  32: "8rem";
-  36: "9rem";
-  40: "10rem";
-  44: "11rem";
-  48: "12rem";
-  52: "13rem";
-  56: "14rem";
-  60: "15rem";
-  64: "16rem";
-  72: "18rem";
-  80: "20rem";
-  96: "24rem";
-};
+type Spacing = Record<
+  | "px"
+  | "0"
+  | "0.5"
+  | "1"
+  | "1.5"
+  | "2"
+  | "2.5"
+  | "3"
+  | "3.5"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "14"
+  | "16"
+  | "20"
+  | "24"
+  | "28"
+  | "32"
+  | "36"
+  | "40"
+  | "44"
+  | "48"
+  | "52"
+  | "56"
+  | "60"
+  | "64"
+  | "72"
+  | "80"
+  | "96",
+  string
+>;
+interface Padding extends Spacing {}
+interface ScrollMargin extends Spacing {}
+interface ScrollPadding extends Spacing {}
+interface Space extends Spacing {}
 interface FlexBasis extends Spacing {
   auto: string;
   "1/2": "50%";
@@ -592,34 +631,62 @@ type MinWidth = {
   max: "max-content";
   fit: "fit-content";
 };
+type MaxWidth = {
+  none: string;
+  0: string;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  "2xl": string;
+  "3xl": string;
+  "4xl": string;
+  "5xl": string;
+  "6xl": string;
+  "7xl": string;
+  full: string;
+  min: string;
+  max: string;
+  fit: string;
+  prose: string;
+  [key: `max-w-${string}`]: string;
+};
 type ObjectPosition = {
-  bottom: "bottom";
-  center: "center";
-  left: "left";
-  "left-bottom": "left bottom";
-  "left-top": "left top";
-  right: "right";
-  "right-bottom": "right bottom";
-  "right-top": "right top";
-  top: "top";
+  bottom: string;
+  center: string;
+  left: string;
+  "left-bottom": string;
+  "left-top": string;
+  right: string;
+  "right-bottom": string;
+  "right-top": string;
+  top: string;
 };
 type Opacity = {
-  0: "0";
-  5: "0.05";
-  10: "0.1";
-  20: "0.2";
-  25: "0.25";
-  30: "0.3";
-  40: "0.4";
-  50: "0.5";
-  60: "0.6";
-  70: "0.7";
-  75: "0.75";
-  80: "0.8";
-  90: "0.9";
-  95: "0.95";
-  100: "1";
+  0: string;
+  5: string;
+  10: string;
+  20: string;
+  25: string;
+  30: string;
+  40: string;
+  50: string;
+  60: string;
+  70: string;
+  75: string;
+  80: string;
+  90: string;
+  95: string;
+  100: string;
 };
+interface BorderOpacity extends Opacity {}
+interface BackgroundOpacity extends Opacity {}
+interface PlaceholderOpacity extends Opacity {}
+interface RingOpacity extends Opacity {
+  DEFAULT: string;
+}
+
 type Order = {
   first: "-9999";
   last: "9999";
@@ -636,6 +703,42 @@ type Order = {
   10: "10";
   11: "11";
   12: "12";
+};
+interface RingColor extends Colors {
+  DEFAULT: string;
+}
+type RingOffsetWidth = {
+  0: string;
+  1: string;
+  2: string;
+  4: string;
+  8: string;
+};
+interface RingWidth extends RingOffsetWidth {
+  DEFAULT: string;
+}
+type Rotate = Record<
+  "0" | "1" | "2" | "3" | "6" | "12" | "45" | "90" | "180",
+  string
+>;
+type Saturate = {
+  0: string;
+  50: string;
+  100: string;
+  150: string;
+  200: string;
+};
+type Scale = {
+  0: string;
+  50: string;
+  75: string;
+  90: string;
+  95: string;
+  100: string;
+  105: string;
+  110: string;
+  125: string;
+  150: string;
 };
 interface Translate extends Spacing {
   "1/2": "50%";
@@ -739,6 +842,7 @@ type TransitionTimingFunction = {
   out: "cubic-bezier(0, 0, 0.2, 1)";
   "in-out": "cubic-bezier(0.4, 0, 0.2, 1)";
 };
+type ZIndex = Record<"auto" | "0" | "10" | "20" | "30" | "40" | "50", string>;
 
 type ThemeProps = {
   theme: Theme;
@@ -752,7 +856,7 @@ type Theme = {
   accentColor: ThemeFunc<ThemeProps>;
   animation: AnyRecord;
   aria: AnyRecord;
-  aspectRatio: AnyRecord;
+  aspectRatio: AspectRatio;
   backdropBlur: ThemeFunc<ThemeProps>;
   backdropBrightness: ThemeFunc<ThemeProps>;
   backdropContrast: ThemeFunc<ThemeProps>;
@@ -763,13 +867,13 @@ type Theme = {
   backdropSaturate: ThemeFunc<ThemeProps>;
   backdropSepia: ThemeFunc<ThemeProps>;
   backgroundColor: ThemeFunc<AnyRecord>;
-  backgroundImage: AnyRecord;
-  backgroundOpacity: ThemeFunc<ThemeProps>;
-  backgroundPosition: AnyRecord;
+  backgroundImage: BackgroundImage;
+  backgroundOpacity: ThemeFunc<Opacity, BackgroundOpacity>;
+  backgroundPosition: BackgroundPosition;
   backgroundSize: AnyRecord;
   blur: AnyRecord;
   borderColor: ThemeFunc<AnyRecord>;
-  borderOpacity: ThemeFunc<ThemeProps>;
+  borderOpacity: ThemeFunc<Opacity, BorderOpacity>;
   borderRadius: AnyRecord;
   borderSpacing: ThemeFunc<ThemeProps>;
   borderWidth: AnyRecord;
@@ -797,7 +901,7 @@ type Theme = {
   fontSizeLineHeight: FontSizeLineHeight;
   fontWeight: FontWeight;
   gap: ThemeFunc<ThemeProps, Gap>;
-  gradientColorStops: ThemeFunc<AnyRecord>;
+  gradientColorStops: ThemeFunc<Colors, GradientColorStops>;
   gradientColorStopPositions: AnyRecord;
   grayscale: GrayScale;
   gridAutoColumns: AnyRecord;
@@ -810,7 +914,7 @@ type Theme = {
   gridRowStart: GridRowStart;
   gridTemplateColumns: GridTemplateColumns;
   gridTemplateRows: GridTemplateRows;
-  height: ThemeFunc<ThemeProps, Height>;
+  height: ThemeFunc<Spacing, Height>;
   hueRotate: HueRotate;
   inset: ThemeFunc<ThemeProps, Inset>;
   invert: Invert;
@@ -819,42 +923,42 @@ type Theme = {
   lineHeight: LineHeight;
   listStyleType: ListStyleType;
   listStyleImage: ListStyleImage;
-  margin: ThemeFunc<ThemeProps, Margin>;
+  margin: ThemeFunc<Spacing, Margin>;
   lineClamp: LineClamp;
-  maxHeight: ThemeFunc<ThemeProps, MaxHeight>;
-  maxWidth: ThemeFunc<ThemeProps>;
+  maxHeight: ThemeFunc<Spacing, MaxHeight>;
+  maxWidth: ThemeFunc<ThemeProps, MaxWidth>;
   minHeight: MinHeight;
   minWidth: MinWidth;
   objectPosition: ObjectPosition;
   opacity: Opacity;
   order: Order;
-  outlineColor: ThemeFunc<Colors, Colors>;
+  outlineColor: ThemeFunc<Colors, OutlineColor>;
   outlineOffset: AnyRecord;
   outlineWidth: AnyRecord;
-  padding: ThemeFunc<ThemeProps>;
-  placeholderColor: ThemeFunc<Colors, Colors>;
-  placeholderOpacity: ThemeFunc<ThemeProps>;
-  ringColor: ThemeFunc<AnyRecord>;
-  ringOffsetColor: ThemeFunc<AnyRecord>;
-  ringOffsetWidth: AnyRecord;
-  ringOpacity: ThemeFunc<ThemeProps>;
-  ringWidth: AnyRecord;
-  rotate: AnyRecord;
-  saturate: AnyRecord;
-  scale: AnyRecord;
+  padding: ThemeFunc<Spacing, Padding>;
+  placeholderColor: ThemeFunc<Colors, PlaceholderColor>;
+  placeholderOpacity: ThemeFunc<Opacity, PlaceholderOpacity>;
+  ringColor: ThemeFunc<Colors, RingColor>;
+  ringOffsetColor: ThemeFunc<Colors, RingOffsetColors>;
+  ringOffsetWidth: RingOffsetWidth;
+  ringOpacity: ThemeFunc<Opacity, RingOpacity>;
+  ringWidth: RingWidth;
+  rotate: Rotate;
+  saturate: Saturate;
+  scale: Scale;
   screens: Screens;
-  scrollMargin: ThemeFunc<Spacing, Spacing>;
-  scrollPadding: ThemeFunc<Spacing, Spacing>;
+  scrollMargin: ThemeFunc<Spacing, ScrollMargin>;
+  scrollPadding: ThemeFunc<Spacing, ScrollPadding>;
   sepia: Sepia;
   skew: Skew;
-  space: ThemeFunc<ThemeProps>;
+  space: ThemeFunc<Spacing, Space>;
   spacing: Spacing;
-  stroke: ThemeFunc<ThemeProps>;
-  strokeWidth: AnyRecord;
+  stroke: ThemeFunc<Colors, Stroke>;
+  strokeWidth: StrokeWidth;
   supports: AnyRecord;
   data: AnyRecord;
-  textColor: ThemeFunc<AnyRecord>;
-  textDecorationColor: ThemeFunc<AnyRecord>;
+  textColor: ThemeFunc<Colors, TextColor>;
+  textDecorationColor: ThemeFunc<Colors, TextDecorationColor>;
   textDecorationThickness: AnyRecord;
   textIndent: ThemeFunc<Spacing, Spacing>;
   textOpacity: ThemeFunc<Opacity, Opacity>;
@@ -867,7 +971,7 @@ type Theme = {
   translate: ThemeFunc<ThemeProps, Translate>;
   width: ThemeFunc<ThemeProps, Width>;
   willChange: AnyRecord;
-  zIndex: AnyRecord;
+  zIndex: ZIndex;
 };
 
 export const flatten = (
@@ -926,7 +1030,9 @@ export const theme: Theme = {
   backdropOpacity: ({ theme }: ThemeProps) => theme.opacity,
   backdropSaturate: ({ theme }: ThemeProps) => theme.saturate,
   backdropSepia: ({ theme }: ThemeProps) => theme.sepia,
-  backgroundColor: (colors) => colors,
+  backgroundColor: (colors) => {
+    return { ...colors };
+  },
   backgroundImage: {
     none: "none",
     "gradient-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
@@ -940,7 +1046,7 @@ export const theme: Theme = {
     "gradient-to-l": "linear-gradient(to left, var(--tw-gradient-stops))",
     "gradient-to-tl": "linear-gradient(to top left, var(--tw-gradient-stops))",
   },
-  backgroundOpacity: ({ theme }: ThemeProps) => theme.opacity,
+  backgroundOpacity: (opacity) => opacity,
   backgroundPosition: {
     bottom: "bottom",
     center: "center",
@@ -972,7 +1078,9 @@ export const theme: Theme = {
     ...colors,
     DEFAULT: colors["gray-200"] || "currentColor",
   }),
-  borderOpacity: ({ theme }: ThemeProps) => theme.opacity,
+  borderOpacity: (opacity) => {
+    return { ...opacity };
+  },
   borderRadius: {
     none: "0px",
     sm: "0.125rem",
@@ -1004,7 +1112,9 @@ export const theme: Theme = {
     inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
     none: "none",
   },
-  boxShadowColor: (colors) => colors,
+  boxShadowColor: (colors) => {
+    return { ...colors };
+  },
   brightness: {
     0: "0",
     50: ".5",
@@ -1018,7 +1128,9 @@ export const theme: Theme = {
     150: "1.5",
     200: "2",
   },
-  caretColor: (colors) => colors,
+  caretColor: (colors) => {
+    return { ...colors };
+  },
   colors: ({ colors }) => colors,
   columns: {
     auto: "auto",
@@ -1100,7 +1212,7 @@ export const theme: Theme = {
     "zoom-out": "zoom-out",
   },
   divideColor: (colors) => theme.borderColor(colors),
-  divideOpacity: ({ theme }: ThemeProps) => theme.borderOpacity({ theme }),
+  divideOpacity: ({ theme }: ThemeProps) => theme.borderOpacity(theme.opacity),
   divideWidth: ({ theme }: ThemeProps) => theme.borderWidth,
   dropShadow: {
     sm: "0 1px 1px rgb(0 0 0 / 0.05)",
@@ -1238,7 +1350,9 @@ export const theme: Theme = {
     black: "900",
   },
   gap: ({ theme }) => theme.spacing,
-  gradientColorStops: (colors) => colors,
+  gradientColorStops: (colors) => {
+    return { ...colors };
+  },
   gradientColorStopPositions: {
     "0%": "0%",
     "5%": "5%",
@@ -1380,9 +1494,9 @@ export const theme: Theme = {
     5: "repeat(5, minmax(0, 1fr))",
     6: "repeat(6, minmax(0, 1fr))",
   },
-  height: ({ theme }: ThemeProps) => ({
+  height: (spacing) => ({
     auto: "auto",
-    ...theme.spacing,
+    ...spacing,
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -1487,9 +1601,9 @@ export const theme: Theme = {
   listStyleImage: {
     none: "none",
   },
-  margin: ({ theme }) => ({
+  margin: (spacing) => ({
     auto: "auto",
-    ...theme.spacing,
+    ...spacing,
   }),
   lineClamp: {
     1: "1",
@@ -1499,8 +1613,8 @@ export const theme: Theme = {
     5: "5",
     6: "6",
   },
-  maxHeight: ({ theme }) => ({
-    ...theme.spacing,
+  maxHeight: (spacing) => ({
+    ...spacing,
     none: "none",
     full: "100%",
     screen: "100vh",
@@ -1589,7 +1703,9 @@ export const theme: Theme = {
     11: "11",
     12: "12",
   },
-  outlineColor: (colors) => colors,
+  outlineColor: (colors) => {
+    return { ...colors };
+  },
   outlineOffset: {
     0: "0px",
     1: "1px",
@@ -1604,14 +1720,22 @@ export const theme: Theme = {
     4: "4px",
     8: "8px",
   },
-  padding: ({ theme }: ThemeProps) => theme.spacing,
-  placeholderColor: (colors) => colors,
-  placeholderOpacity: ({ theme }: ThemeProps) => theme.opacity,
+  padding: (spacing) => {
+    return { ...spacing };
+  },
+  placeholderColor: (colors) => {
+    return { ...colors };
+  },
+  placeholderOpacity: (opacity) => {
+    return { ...opacity };
+  },
   ringColor: (colors) => ({
     DEFAULT: colors["blue-100"] || "#3b82f6",
     ...colors,
   }),
-  ringOffsetColor: (colors) => colors,
+  ringOffsetColor: (colors) => {
+    return { ...colors };
+  },
   ringOffsetWidth: {
     0: "0px",
     1: "1px",
@@ -1619,9 +1743,9 @@ export const theme: Theme = {
     4: "4px",
     8: "8px",
   },
-  ringOpacity: ({ theme }: ThemeProps) => ({
+  ringOpacity: (opacity) => ({
     DEFAULT: "0.5",
-    ...theme.opacity,
+    ...opacity,
   }),
   ringWidth: {
     DEFAULT: "3px",
@@ -1682,9 +1806,7 @@ export const theme: Theme = {
     6: "6deg",
     12: "12deg",
   },
-  space: ({ theme }: ThemeProps) => ({
-    ...theme.spacing,
-  }),
+  space: (spacing) => spacing,
   spacing: {
     px: "1px",
     0: "0px",
@@ -1722,9 +1844,9 @@ export const theme: Theme = {
     80: "20rem",
     96: "24rem",
   },
-  stroke: ({ theme }) => ({
+  stroke: (colors) => ({
     none: "none",
-    ...theme.colors,
+    ...colors,
   }),
   strokeWidth: {
     0: "0",
@@ -1733,8 +1855,12 @@ export const theme: Theme = {
   },
   supports: {},
   data: {},
-  textColor: (colors) => colors,
-  textDecorationColor: (colors) => colors,
+  textColor: (colors) => {
+    return { ...colors };
+  },
+  textDecorationColor: (colors) => {
+    return { ...colors };
+  },
   textDecorationThickness: {
     auto: "auto",
     "from-font": "from-font",

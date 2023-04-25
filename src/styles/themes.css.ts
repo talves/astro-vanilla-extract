@@ -36,7 +36,7 @@ export const vars = createThemeContract({
   lineHeight: flatten(theme.lineHeight),
   fontStyle: { italic: "italic", "not-italic": "normal" },
   letterSpacing: flatten(theme.letterSpacing),
-  maxHeight: flatten(theme.maxHeight({ theme })),
+  maxHeight: { ...theme.maxHeight(theme.spacing) },
   space: flatten(theme.spacing),
   radii: {
     sm: ``,
@@ -77,7 +77,7 @@ const commonVars = {
   lineHeight: { ...theme.lineHeight },
   letterSpacing: { ...theme.letterSpacing },
   fontStyle: { italic: "italic", "not-italic": "normal" },
-  maxHeight: { ...theme.maxHeight({ theme }) },
+  maxHeight: { ...theme.maxHeight(theme.spacing) },
   radii: {
     sm: `0.2rem`,
     md: `0.4rem`,
