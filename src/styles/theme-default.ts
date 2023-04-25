@@ -251,6 +251,7 @@ type Colors = {
   "zinc-900": "#18181b";
   "zinc-950": "#09090b";
 };
+interface BackgroundColor extends Colors {}
 interface OutlineColor extends Colors {}
 interface PlaceholderColor extends Colors {}
 interface RingOffsetColors extends Colors {}
@@ -260,6 +261,48 @@ interface TextDecorationColor extends Colors {}
 interface Stroke extends Colors {
   none: string;
 }
+type Blur = {
+  0: string;
+  none: string;
+  sm: string;
+  DEFAULT: string;
+  md: string;
+  lg: string;
+  xl: string;
+  "2xl": string;
+  "3xl": string;
+};
+interface BackdropBlur extends Blur {}
+type Brightness = {
+  0: string;
+  50: string;
+  75: string;
+  90: string;
+  95: string;
+  100: string;
+  105: string;
+  110: string;
+  125: string;
+  150: string;
+  200: string;
+};
+interface BackdropBrightness extends Brightness {}
+type Contrast = {
+  0: string;
+  50: string;
+  75: string;
+  100: string;
+  125: string;
+  150: string;
+  200: string;
+};
+interface BackdropContrast extends Contrast {}
+interface BackdropGrayscale extends GrayScale {}
+interface BackdropHueRotate extends HueRotate {}
+interface BackdropInvert extends Invert {}
+interface BackdropOpacity extends Opacity {}
+interface BackdropSaturate extends Saturate {}
+interface BackdropSepia extends Sepia {}
 type StrokeWidth = Record<"0" | "1" | "2", string>;
 type AspectRatio = Record<"auto" | "square" | "video", string>;
 type BackgroundImage = {
@@ -283,6 +326,34 @@ type BackgroundPosition = {
   "right-bottom": "right bottom";
   "right-top": "right top";
   top: "top";
+};
+type Columns = {
+  auto: "auto";
+  1: "1";
+  2: "2";
+  3: "3";
+  4: "4";
+  5: "5";
+  6: "6";
+  7: "7";
+  8: "8";
+  9: "9";
+  10: "10";
+  11: "11";
+  12: "12";
+  "3xs": "16rem";
+  "2xs": "18rem";
+  xs: "20rem";
+  sm: "24rem";
+  md: "28rem";
+  lg: "32rem";
+  xl: "36rem";
+  "2xl": "42rem";
+  "3xl": "48rem";
+  "4xl": "56rem";
+  "5xl": "64rem";
+  "6xl": "72rem";
+  "7xl": "80rem";
 };
 type FontSize = Record<
   | "xs"
@@ -414,10 +485,7 @@ type FlexShrink = {
   0: string;
 };
 interface Gap extends Spacing {}
-type GrayScale = {
-  0: "0";
-  DEFAULT: "100%";
-};
+type GrayScale = Record<"0" | "Default", string>;
 type GridColumn = {
   auto: "auto";
   "span-1": "span 1 / span 1";
@@ -686,7 +754,17 @@ interface PlaceholderOpacity extends Opacity {}
 interface RingOpacity extends Opacity {
   DEFAULT: string;
 }
-
+type BorderRadius = {
+  none: string;
+  sm: string;
+  DEFAULT: string;
+  md: string;
+  lg: string;
+  xl: string;
+  "2xl": string;
+  "3xl": string;
+  full: string;
+};
 type Order = {
   first: "-9999";
   last: "9999";
@@ -857,35 +935,35 @@ type Theme = {
   animation: AnyRecord;
   aria: AnyRecord;
   aspectRatio: AspectRatio;
-  backdropBlur: ThemeFunc<ThemeProps>;
-  backdropBrightness: ThemeFunc<ThemeProps>;
-  backdropContrast: ThemeFunc<ThemeProps>;
-  backdropGrayscale: ThemeFunc<ThemeProps>;
-  backdropHueRotate: ThemeFunc<ThemeProps>;
-  backdropInvert: ThemeFunc<ThemeProps>;
-  backdropOpacity: ThemeFunc<ThemeProps>;
-  backdropSaturate: ThemeFunc<ThemeProps>;
-  backdropSepia: ThemeFunc<ThemeProps>;
-  backgroundColor: ThemeFunc<AnyRecord>;
+  backdropBlur: ThemeFunc<Blur, BackdropBlur>;
+  backdropBrightness: ThemeFunc<Brightness, BackdropBrightness>;
+  backdropContrast: ThemeFunc<Contrast, BackdropContrast>;
+  backdropGrayscale: ThemeFunc<GrayScale, BackdropGrayscale>;
+  backdropHueRotate: ThemeFunc<HueRotate, BackdropHueRotate>;
+  backdropInvert: ThemeFunc<Invert, BackdropInvert>;
+  backdropOpacity: ThemeFunc<Opacity, BackdropOpacity>;
+  backdropSaturate: ThemeFunc<Saturate, BackdropSaturate>;
+  backdropSepia: ThemeFunc<Sepia, BackdropSepia>;
+  backgroundColor: ThemeFunc<Colors, BackgroundColor>;
   backgroundImage: BackgroundImage;
   backgroundOpacity: ThemeFunc<Opacity, BackgroundOpacity>;
   backgroundPosition: BackgroundPosition;
   backgroundSize: AnyRecord;
-  blur: AnyRecord;
+  blur: Blur;
   borderColor: ThemeFunc<AnyRecord>;
   borderOpacity: ThemeFunc<Opacity, BorderOpacity>;
-  borderRadius: AnyRecord;
+  borderRadius: BorderRadius;
   borderSpacing: ThemeFunc<ThemeProps>;
   borderWidth: AnyRecord;
   boxShadow: AnyRecord;
   boxShadowColor: ThemeFunc<AnyRecord>;
-  brightness: AnyRecord;
+  brightness: Brightness;
   caretColor: ThemeFunc<AnyRecord>;
   colors: ThemeFunc<{ colors: Colors }, Colors>;
-  columns: AnyRecord;
+  columns: Columns;
   container: AnyRecord;
   content: AnyRecord;
-  contrast: AnyRecord;
+  contrast: Contrast;
   cursor: AnyRecord;
   divideColor: ThemeFunc<AnyRecord>;
   divideOpacity: ThemeFunc<ThemeProps>;
@@ -1021,15 +1099,33 @@ export const theme: Theme = {
     square: "1 / 1",
     video: "16 / 9",
   },
-  backdropBlur: ({ theme }: ThemeProps) => theme.blur,
-  backdropBrightness: ({ theme }: ThemeProps) => theme.brightness,
-  backdropContrast: ({ theme }: ThemeProps) => theme.contrast,
-  backdropGrayscale: ({ theme }: ThemeProps) => theme.grayscale,
-  backdropHueRotate: ({ theme }: ThemeProps) => theme.hueRotate,
-  backdropInvert: ({ theme }: ThemeProps) => theme.invert,
-  backdropOpacity: ({ theme }: ThemeProps) => theme.opacity,
-  backdropSaturate: ({ theme }: ThemeProps) => theme.saturate,
-  backdropSepia: ({ theme }: ThemeProps) => theme.sepia,
+  backdropBlur: (blur) => {
+    return { ...blur };
+  },
+  backdropBrightness: (brightness) => {
+    return { ...brightness };
+  },
+  backdropContrast: (contrast) => {
+    return { ...contrast };
+  },
+  backdropGrayscale: (grayscale) => {
+    return { ...grayscale };
+  },
+  backdropHueRotate: (hueRotate) => {
+    return { ...hueRotate };
+  },
+  backdropInvert: (invert) => {
+    return { ...invert };
+  },
+  backdropOpacity: (opacity) => {
+    return { ...opacity };
+  },
+  backdropSaturate: (saturate) => {
+    return { ...saturate };
+  },
+  backdropSepia: (sepia) => {
+    return { ...sepia };
+  },
   backgroundColor: (colors) => {
     return { ...colors };
   },
