@@ -1,6 +1,6 @@
 import { createTheme, createThemeContract, style } from "@vanilla-extract/css";
 import { theme, flatten } from "@/styles/theme-default";
-import colors from "@/styles/colors.css";
+import colors, { hexToRgb } from "@/styles/colors.css";
 
 export const vars = createThemeContract({
   colors: {
@@ -90,21 +90,6 @@ export const breakpoints = {
   tablet: 768,
   desktop: 1200,
 };
-
-function hexToRgb(hex: string) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : {
-        r: 0,
-        g: 0,
-        b: 0,
-      };
-}
 
 const lightShadowRGB = hexToRgb(colors["slate-400"]);
 

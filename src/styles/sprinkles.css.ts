@@ -4,7 +4,7 @@ import { vars } from "@/styles/themes.css";
 const palette = vars.colors;
 import { fontFamily, fontWeight, lineHeight } from "@/styles/typography.css";
 import { size, space, position } from "@/styles/size.css";
-import { borderSize, borderRadius, shadows } from "@/styles/border.css";
+import { borderSize, borderRadius, boxShadow } from "@/styles/border.css";
 import { style } from "@vanilla-extract/css";
 
 const responsiveProperties = defineProperties({
@@ -87,7 +87,7 @@ const systemProperties = defineProperties({
     borderBottomWidth: borderSize,
     borderRightWidth: borderSize,
     borderWidth: borderSize,
-    boxShadow: shadows,
+    boxShadow: boxShadow,
   },
 });
 

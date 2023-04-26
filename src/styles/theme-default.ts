@@ -646,6 +646,7 @@ type BorderRadius = {
   "2xl": string;
   "3xl": string;
   full: string;
+  round: string;
 };
 type BorderWidth = Record<"DEFAULT" | 0 | 2 | 4 | 8, string>;
 interface DivideWidth extends BorderWidth {}
@@ -1054,6 +1055,7 @@ export const theme: Theme = {
     "2xl": "1rem",
     "3xl": "1.5rem",
     full: "9999px",
+    round: "1e5px",
   },
   borderSpacing: (spacing) => ({
     ...spacing,

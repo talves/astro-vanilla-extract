@@ -20,6 +20,7 @@ export const mainContainer = sprinklesTailwind({
     tablet: "2xl",
   },
   flex: "1",
+  boxShadow: "shadow-5",
 });
 
 export const container = style({
