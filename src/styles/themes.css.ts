@@ -37,7 +37,7 @@ export const vars = createThemeContract({
   fontStyle: { italic: "italic", "not-italic": "normal" },
   letterSpacing: flatten(theme.letterSpacing),
   maxHeight: { ...theme.maxHeight(theme.spacing) },
-  space: flatten(theme.spacing),
+  space: theme.spacing,
   radii: {
     sm: ``,
     md: ``,
