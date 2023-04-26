@@ -74,9 +74,9 @@ const systemProperties = defineProperties({
   // },
   // defaultCondition: "lightMode",
   properties: {
-    color: palette,
-    backgroundColor: palette,
-    borderColor: palette,
+    color: vars.colors,
+    backgroundColor: vars.colors,
+    borderColor: vars.colors,
     fontFamily: fontFamily,
     // fontSize: vars.fontSize,
     fontWeight: fontWeight,

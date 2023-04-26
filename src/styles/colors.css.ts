@@ -1,4 +1,6 @@
-const colors = {
+import type { Colors } from "@/styles/theme-default";
+
+const colors: Colors = {
   inherit: "inherit",
   current: "currentColor",
   transparent: "transparent",
