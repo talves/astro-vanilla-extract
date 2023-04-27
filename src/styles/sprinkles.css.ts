@@ -3,7 +3,7 @@ import { vars } from "@/styles/themes.css";
 
 const palette = vars.colors;
 import { fontFamily, fontWeight, lineHeight } from "@/styles/typography.css";
-import { size, space, position } from "@/styles/size.css";
+import { space, position, height, width } from "@/styles/size.css";
 import { borderSize, borderRadius, boxShadow } from "@/styles/border.css";
 import { style } from "@vanilla-extract/css";
 
@@ -38,17 +38,18 @@ const responsiveProperties = defineProperties({
     paddingBottom: space,
     paddingLeft: space,
     paddingRight: space,
+    paddingBlock: space,
     marginTop: space,
     marginBottom: space,
     marginLeft: space,
     marginRight: space,
     gap: space,
-    width: { ...size, screen: "100vw" },
-    height: { ...size, screen: "100vh" },
-    top: position,
-    left: position,
-    bottom: position,
-    right: position,
+    width: { ...width },
+    height: { ...height },
+    top: { ...position },
+    left: { ...position },
+    bottom: { ...position },
+    right: { ...position },
     objectFit: ["contain", "cover", "fill", "none", "scale-down"],
     fontSize: vars.fontSize,
     lineHeight: vars.fontSizeLineHeight,

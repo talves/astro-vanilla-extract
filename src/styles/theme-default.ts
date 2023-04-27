@@ -868,7 +868,7 @@ type Theme = {
   gridTemplateRows: GridTemplateRows;
   height: ThemeFunc<Spacing, Height>;
   hueRotate: HueRotate;
-  inset: ThemeFunc<ThemeProps, Inset>;
+  inset: ThemeFunc<Spacing, Inset>;
   invert: Invert;
   keyframes: {};
   letterSpacing: LetterSpacing;
@@ -1489,9 +1489,9 @@ export const theme: Theme = {
     90: "90deg",
     180: "180deg",
   },
-  inset: ({ theme }) => ({
+  inset: (spacing) => ({
     auto: "auto",
-    ...theme.spacing,
+    ...spacing,
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
