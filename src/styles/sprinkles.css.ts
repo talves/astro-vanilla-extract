@@ -1,5 +1,6 @@
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 import { vars } from "@/styles/themes.css";
+import { theme } from "@/styles/theme-default";
 
 const palette = vars.colors;
 import { fontFamily, fontWeight, lineHeight } from "@/styles/typography.css";
@@ -34,6 +35,7 @@ const responsiveProperties = defineProperties({
     },
     flexWrap: ["wrap", "wrap-reverse", "nowrap"],
     position: ["static", "fixed", "absolute", "relative", "sticky"],
+    objectPosition: { ...theme.objectPosition },
     paddingTop: space,
     paddingBottom: space,
     paddingLeft: space,
@@ -92,7 +94,7 @@ const systemProperties = defineProperties({
   },
 });
 
-export const sprinklesTailwind = createSprinkles(
+export const sprinklesStyle = createSprinkles(
   responsiveProperties,
   systemProperties
 );
@@ -116,4 +118,4 @@ export const clickable = style({
 });
 
 // It's a good idea to export the Sprinkles type too
-export type Sprinkles = Parameters<typeof sprinklesTailwind>[0];
+export type Sprinkles = Parameters<typeof sprinklesStyle>[0];

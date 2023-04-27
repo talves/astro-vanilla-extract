@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/styles/themes.css";
-import { sprinklesTailwind } from "@/styles/sprinkles.css";
+import { sprinklesStyle } from "@/styles/sprinkles.css";
 
-export const mainContainer = sprinklesTailwind({
+export const mainContainer = sprinklesStyle({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",

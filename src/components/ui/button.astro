@@ -1,0 +1,6 @@
+---
+import { buttonDefault, clickable } from "@/components/ui/button.css";
+const { active } = Astro.props;
+---
+
+<a class:list={[buttonDefault, active ? undefined : clickable]}><slot /></a>

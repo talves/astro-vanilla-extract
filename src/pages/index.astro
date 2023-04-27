@@ -2,10 +2,12 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageLayout from "@/layouts/PageLayout.astro";
 import ThemeToggle from "@/components/ui/theme-toggle.astro";
+import Button from "@/components/ui/button.astro";
 ---
 
 <BaseLayout description="Vanilla Extract Example" title="Home Page">
   <PageLayout title="Welcome to the home page">
     <p><ThemeToggle /></p>
+    <p><Button>Call To Action</Button></p>
   </PageLayout>
 </BaseLayout>
