@@ -1,6 +1,6 @@
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 import { vars } from "@/styles/themes.css";
-import { theme } from "@/styles/theme-default";
+import { theme, Colors } from "@/styles/theme-default";
 
 const palette = vars.colors;
 import { fontFamily, fontWeight, lineHeight } from "@/styles/typography.css";
@@ -8,13 +8,17 @@ import { space, position, height, width } from "@/styles/size.css";
 import { borderSize, borderRadius, boxShadow } from "@/styles/border.css";
 import { style } from "@vanilla-extract/css";
 
+const mediaQuerySM = `screen and (min-width: ${theme.screens.sm})`;
 const responsiveProperties = defineProperties({
   conditions: {
-    mobile: {},
-    tablet: { "@media": "screen and (min-width: 768px)" },
-    desktop: { "@media": "screen and (min-width: 1024px)" },
+    default: {},
+    sm: { "@media": "screen and (min-width: 640px)" },
+    md: { "@media": `screen and (min-width: ${theme.screens.md})` },
+    lg: { "@media": `screen and (min-width: ${theme.screens.lg})` },
+    xl: { "@media": `screen and (min-width: ${theme.screens.xl})` },
+    "2xl": { "@media": `screen and (min-width: ${theme.screens["2xl"]})` },
   },
-  defaultCondition: "tablet",
+  defaultCondition: "default",
   properties: {
     display: ["none", "flex", "block", "inline", "inline-flex"],
     flexDirection: ["row", "column"],
@@ -41,12 +45,12 @@ const responsiveProperties = defineProperties({
     paddingLeft: space,
     paddingRight: space,
     paddingBlock: space,
-    marginTop: space,
-    marginBottom: space,
-    marginLeft: space,
-    marginRight: space,
+    marginTop: { auto: "auto", ...space },
+    marginBottom: { auto: "auto", ...space },
+    marginLeft: { auto: "auto", ...space },
+    marginRight: { auto: "auto", ...space },
     gap: space,
-    width: { ...width },
+    width: { ...width({ theme }) },
     height: { ...height },
     top: { ...position },
     left: { ...position },
@@ -55,6 +59,7 @@ const responsiveProperties = defineProperties({
     objectFit: ["contain", "cover", "fill", "none", "scale-down"],
     fontSize: vars.fontSize,
     lineHeight: vars.fontSizeLineHeight,
+    maxWidth: vars.maxWidth,
   },
   shorthands: {
     p: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
@@ -70,6 +75,8 @@ const responsiveProperties = defineProperties({
   },
 });
 
+const allColors: Colors = vars.colors;
+
 const systemProperties = defineProperties({
   // conditions: {
   //   lightMode: {},
@@ -78,8 +85,8 @@ const systemProperties = defineProperties({
   // defaultCondition: "lightMode",
   properties: {
     color: vars.colors,
-    backgroundColor: vars.colors,
-    borderColor: vars.colors,
+    backgroundColor: allColors,
+    borderColor: allColors,
     fontFamily: fontFamily,
     // fontSize: vars.fontSize,
     fontWeight: fontWeight,
@@ -91,6 +98,7 @@ const systemProperties = defineProperties({
     borderRightWidth: borderSize,
     borderWidth: borderSize,
     boxShadow: boxShadow,
+    flexShrink: ["0", "1"],
   },
 });
 

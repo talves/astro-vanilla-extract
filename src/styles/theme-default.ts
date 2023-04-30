@@ -8,6 +8,16 @@ export type Colors = {
   transparent: string;
   black?: string;
   white: string;
+  primary: string;
+  secondary: string;
+  alternative: string;
+  body: string;
+  text: string;
+  surface: string;
+  surfaceAlt: string;
+  background: string;
+  link: string;
+  linkHover: string;
   [key: `amber-${string}`]: string;
   [key: `blue-${string}`]: string;
   [key: `cyan-${string}`]: string;
@@ -801,7 +811,7 @@ type ThemeProps = {
 };
 
 type AnyRecord = Record<any, string>;
-type FlattenedRecord = Record<string, string | null>;
+type FlattenedRecord<T> = T;
 type ThemeFunc<T, U = AnyRecord> = (props: T) => U;
 
 type Theme = {
@@ -878,7 +888,7 @@ type Theme = {
   margin: ThemeFunc<Spacing, Margin>;
   lineClamp: LineClamp;
   maxHeight: ThemeFunc<Spacing, MaxHeight>;
-  maxWidth: ThemeFunc<ThemeProps, MaxWidth>;
+  maxWidth: ThemeFunc<Screens, MaxWidth>;
   minHeight: MinHeight;
   minWidth: MinWidth;
   objectPosition: ObjectPosition;
@@ -929,8 +939,8 @@ type Theme = {
 export const flatten = (
   items: AnyRecord,
   val: string = ""
-): FlattenedRecord => {
-  const returnVal: Record<any, any> = {};
+): FlattenedRecord<typeof items> => {
+  const returnVal: typeof items = {};
   const keys = Object.keys(items);
   keys.forEach((element) => {
     returnVal[`${element}`] = `${val}`;
@@ -1585,7 +1595,7 @@ export const theme: Theme = {
     max: "max-content",
     fit: "fit-content",
   }),
-  maxWidth: ({ theme }) => ({
+  maxWidth: (screens) => ({
     none: "none",
     0: "0rem",
     xs: "20rem",
@@ -1604,7 +1614,7 @@ export const theme: Theme = {
     max: "max-content",
     fit: "fit-content",
     prose: "65ch",
-    ...breakpoints(theme.screens, "max-w"),
+    ...breakpoints(screens, "max-w"),
   }),
   minHeight: {
     0: "0px",
@@ -1749,8 +1759,8 @@ export const theme: Theme = {
     lg: "1024px",
     xl: "1280px",
     "2xl": "1536px",
-    // "3xl": "1920px",
     // xxl: "1440px",
+    "3xl": "1920px",
   },
   scrollMargin: (spacing) => spacing,
   scrollPadding: (spacing) => spacing,

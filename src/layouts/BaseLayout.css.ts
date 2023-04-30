@@ -15,9 +15,9 @@ export const mainContainer = sprinklesStyle({
   //   tablet: "2xl",
   // },
   text: {
-    desktop: "4xl",
-    mobile: "base",
-    tablet: "2xl",
+    lg: "4xl",
+    sm: "base",
+    md: "2xl",
   },
   flex: "1",
 });

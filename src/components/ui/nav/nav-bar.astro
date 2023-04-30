@@ -1,0 +1,38 @@
+---
+import NavBarWrapper from "@/components/ui/nav/nav-bar-wrapper.astro";
+import NavWrapper from "@/components/ui/nav/nav-wrapper.astro";
+import NavFlexWrapper from "@/components/ui/nav/nav-flex-wrapper.astro";
+import NavBarMain from "@/components/ui/nav/nav-bar-main.astro";
+import NavButtons from "@/components/ui/nav/nav-buttons.astro";
+import {
+  barButtonMobile,
+  barButtonMobileExtra,
+  barMobileButtonWrapper,
+  barMobileButtonWrapperConditional,
+  barMobileMenuItemsWrapper,
+} from "@/components/ui/nav/nav.css";
+---
+
+<NavWrapper>
+  <NavBarWrapper>
+    <NavFlexWrapper>
+      <div></div>
+      <NavBarMain><slot /></NavBarMain>
+      <div></div>
+    </NavFlexWrapper>
+  </NavBarWrapper>
+  <!-- Mobile menu, show/hide based on menu state. TODO: Create menu for click control of display: none -->
+  <div class:list={[barMobileButtonWrapper, barMobileButtonWrapperConditional]}>
+    <NavButtons class:list={[barMobileMenuItemsWrapper]}>
+      <a href="#" class:list={[barButtonMobile, barButtonMobileExtra]}
+        >Button1</a
+      >
+      <a href="#" class:list={[barButtonMobile, barButtonMobileExtra]}
+        >Button2</a
+      >
+      <a href="#" class:list={[barButtonMobile, barButtonMobileExtra]}
+        >Button3</a
+      >
+    </NavButtons>
+  </div>
+</NavWrapper>

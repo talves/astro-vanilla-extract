@@ -1,21 +1,11 @@
 import { createTheme, createThemeContract, style } from "@vanilla-extract/css";
-import { theme, flatten } from "@/styles/theme-default";
+import { theme, flatten, Colors } from "@/styles/theme-default";
 import colors, { hexToRgb } from "@/styles/colors.css";
 
 export const vars = createThemeContract({
   colors: {
-    primary: ``,
-    secondary: ``,
-    alternative: ``,
-    body: ``,
-    text: ``,
-    surface: ``,
-    surfaceAlt: ``,
-    background: ``,
-    link: ``,
-    linkHover: ``,
     ...colors,
-  },
+  } as Colors,
   boxShadow: {
     lowElevation: "",
     ...theme.boxShadow,
@@ -37,6 +27,7 @@ export const vars = createThemeContract({
   fontStyle: { italic: "italic", "not-italic": "normal" },
   letterSpacing: flatten(theme.letterSpacing),
   maxHeight: { ...theme.maxHeight(theme.spacing) },
+  maxWidth: { ...theme.maxWidth(theme.screens) },
   space: theme.spacing,
   radii: {
     sm: ``,
@@ -47,6 +38,7 @@ export const vars = createThemeContract({
     maxWidthText: ``,
     maxWidth3XL: ``,
   },
+  borderRadius: flatten(theme.borderRadius),
 });
 
 const fallbackSansFonts = theme.fontFamily.sans?.toString() || "";
@@ -78,11 +70,13 @@ const commonVars = {
   letterSpacing: { ...theme.letterSpacing },
   fontStyle: { italic: "italic", "not-italic": "normal" },
   maxHeight: { ...theme.maxHeight(theme.spacing) },
+  maxWidth: { ...theme.maxWidth(theme.screens) },
   radii: {
     sm: `0.2rem`,
     md: `0.4rem`,
     full: `100%`,
   },
+  borderRadius: theme.borderRadius,
 };
 
 export const breakpoints = {
@@ -95,6 +89,7 @@ const lightShadowRGB = hexToRgb(colors["slate-400"]);
 
 export const lightThemeClass = createTheme(vars, {
   colors: {
+    ...colors,
     primary: colors["indigo-900"],
     secondary: colors["orange-500"],
     alternative: colors["sky-500"],
@@ -105,7 +100,6 @@ export const lightThemeClass = createTheme(vars, {
     background: colors["slate-200"],
     link: colors["blue-800"],
     linkHover: colors["blue-600"],
-    ...colors,
   },
   boxShadow: {
     ...theme.boxShadow,
@@ -119,6 +113,7 @@ const darkShadowRGB = hexToRgb(colors["stone-800"]);
 
 export const darkThemeClass = createTheme(vars, {
   colors: {
+    ...colors,
     primary: colors["slate-300"],
     secondary: colors["stone-800"],
     alternative: colors["orange-500"],
@@ -129,7 +124,6 @@ export const darkThemeClass = createTheme(vars, {
     background: colors["stone-700"],
     link: colors["blue-200"],
     linkHover: colors["blue-400"],
-    ...colors,
   },
   boxShadow: {
     ...theme.boxShadow,

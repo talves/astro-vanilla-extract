@@ -8,6 +8,7 @@ import {
   wrapper,
   headerSize,
 } from "@/layouts/BaseLayout.css";
+import NavBar from "@/components/ui/nav/nav-bar.astro";
 
 export interface Props {
   title: string;
@@ -17,6 +18,7 @@ const { title } = Astro.props as Props;
 ---
 
 <div class:list={[mainContainer]}>
+  <NavBar><a>This is the Nav Bar</a></NavBar>
   <div class:list={[wrapper]}>
     <main class:list={[contentWrapper]}>
       <h1>{title}</h1>

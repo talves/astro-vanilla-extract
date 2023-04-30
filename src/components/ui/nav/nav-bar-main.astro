@@ -1,0 +1,41 @@
+---
+import {
+  barMain,
+  barLogoWrapper,
+  barImageLogo,
+  barMenuWrapper,
+  barButtonItemsWrapper,
+  showOnLarge,
+  hiddenOnLarge,
+  barButton,
+  barButtonExtra,
+  barMainConditional,
+  barImageLogoHidden,
+  barMenuWrapperConditional,
+} from "@/components/ui/nav/nav.css";
+import NavButtons from "@/components/ui/nav/nav-buttons.astro";
+---
+
+<div class:list={[barMain, barMainConditional]}>
+  <div class:list={[barLogoWrapper]}>
+    <img
+      class:list={[barImageLogo, hiddenOnLarge]}
+      src="https://tailwindui.com/img/logos/mark.svg?color=slate&shade=500"
+      alt="Your Company"
+    />
+    <img
+      class:list={[barImageLogoHidden, showOnLarge]}
+      src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=500"
+      alt="Your Company"
+    />
+  </div>
+
+  <div class:list={[barMenuWrapper, barMenuWrapperConditional]}>
+    <!-- <NavButtons class:list={[barButtonItemsWrapper]}><slot /></NavButtons> -->
+    <NavButtons class:list={[barButtonItemsWrapper]}>
+      <a href="#" class:list={[barButton, barButtonExtra]}>FIRST</a>
+      <a href="#" class:list={[barButton, barButtonExtra]}>SECOND</a>
+      <a href="#" class:list={[barButton, barButtonExtra]}>THIRD</a>
+    </NavButtons>
+  </div>
+</div>
