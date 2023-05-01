@@ -8,7 +8,7 @@ export const wrapper = style({
 
 export const barWrapper = sprinklesStyle({
   marginX: "auto",
-  maxWidth: "max-w-3xl",
+  maxWidth: "3xl",
   paddingX: "2",
 });
 export const barWrapperPadding = sprinklesStyle({
@@ -26,12 +26,17 @@ export const barFlexWrapper = sprinklesStyle({
 export const barMain = sprinklesStyle({
   display: "flex",
   flex: "1",
-  alignItems: "center",
-  justifyContent: "center",
+  alignItems: { default: "center", sm: "stretch" },
+  justifyContent: { default: "center", sm: "flex-start" },
 });
-export const barMainConditional = sprinklesStyle({
-  alignItems: { sm: "stretch", md: "center" },
-  justifyContent: { sm: "flex-start", md: "center" },
+
+export const barRightContainer = sprinklesStyle({
+  position: "absolute",
+  insetY: "0",
+  right: "0",
+  display: "flex",
+  alignItems: "center",
+  paddingRight: "2",
 });
 
 export const barLogoWrapper = sprinklesStyle({
@@ -43,29 +48,23 @@ export const barLogoWrapper = sprinklesStyle({
 export const barImageLogo = sprinklesStyle({
   height: "8",
   width: "auto",
-  display: "block",
-});
-export const barImageLogoHidden = sprinklesStyle({
-  height: "8",
-  width: "auto",
-  display: "none",
 });
 export const hiddenOnLarge = sprinklesStyle({
   display: {
+    default: "block",
     lg: "none",
   },
 });
 export const showOnLarge = sprinklesStyle({
   display: {
+    default: "none",
     lg: "block",
   },
 });
 
 export const barMenuWrapper = sprinklesStyle({
-  display: "none",
-});
-export const barMenuWrapperConditional = sprinklesStyle({
   display: {
+    default: "none",
     sm: "block",
   },
   marginLeft: {
@@ -78,10 +77,8 @@ export const barButtonItemsWrapper = sprinklesStyle({
   gap: "4",
 });
 export const barMobileButtonWrapper = sprinklesStyle({
-  display: "block",
-});
-export const barMobileButtonWrapperConditional = sprinklesStyle({
   display: {
+    default: "block",
     sm: "none",
   },
 });
@@ -119,6 +116,7 @@ export const barButton = style({
   borderRadius: vars.borderRadius.md,
   fontWeight: vars.fontWeight.medium,
 });
+
 export const barButtonExtra = sprinklesStyle({
   text: "base",
   paddingX: "3",

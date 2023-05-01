@@ -17,20 +17,22 @@ export interface Props {
 const { title } = Astro.props as Props;
 ---
 
-<div class:list={[mainContainer]}>
-  <NavBar><a>This is the Nav Bar</a></NavBar>
-  <div class:list={[wrapper]}>
-    <main class:list={[contentWrapper]}>
-      <h1>{title}</h1>
-      <p class:list={[intro]}>Here&rsquo;s the latest theme&hellip;</p>
-      <h2>SubTitle Here</h2>
-      <hr />
-      <slot />
-    </main>
-    <footer class:list={[contentWrapper, footer]}>
-      <hr />
-      <p>You can <a href="#">unsubscribe here</a><sup>2</sup>.</p>
-      <p><code> var this = "this is this"</code></p>
-    </footer>
+<div style="width: 100%;"><NavBar><a>This is the Nav Bar</a></NavBar></div>
+<div class={container}>
+  <div class:list={[mainContainer]}>
+    <div class:list={[wrapper]}>
+      <main class:list={[contentWrapper]}>
+        <h1>{title}</h1>
+        <p class:list={[intro]}>Here&rsquo;s the latest theme&hellip;</p>
+        <h2>SubTitle Here</h2>
+        <hr />
+        <slot />
+      </main>
+      <footer class:list={[contentWrapper, footer]}>
+        <hr />
+        <p>You can <a href="#">unsubscribe here</a><sup>2</sup>.</p>
+        <p><code> var this = "this is this"</code></p>
+      </footer>
+    </div>
   </div>
 </div>

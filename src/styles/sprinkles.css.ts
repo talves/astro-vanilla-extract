@@ -71,6 +71,8 @@ const responsiveProperties = defineProperties({
     marginY: ["marginTop", "marginBottom"],
     placeItems: ["justifyContent", "alignItems"],
     inset: ["top", "left", "right", "bottom"],
+    insetX: ["left", "right"],
+    insetY: ["top", "bottom"],
     text: ["fontSize", "lineHeight"],
   },
 });

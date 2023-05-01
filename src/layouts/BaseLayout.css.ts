@@ -22,6 +22,11 @@ export const mainContainer = sprinklesStyle({
   flex: "1",
 });
 
+export const bodyContainer = style({
+  backgroundColor: vars.colors.surfaceAlt,
+  color: vars.colors.text,
+});
+
 export const container = style({
   display: "flex",
   flexDirection: "column",
