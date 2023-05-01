@@ -1,0 +1,28 @@
+---
+import { menu } from "@/content/settings/config.json";
+import {
+  clickableButton,
+  unclickableButton,
+} from "@/components/ui/nav/nav.css";
+const path = Astro.url.pathname;
+---
+
+{
+  menu.items
+    .filter((k: { hidden: any }) => !k.hidden)
+    .map((item, index) => {
+      // console.log(`${item.label} isActive:`, path === item.path);
+      return path === item.path ? (
+        <div class:list={[...Astro.props["class:list"], unclickableButton]}>
+          {item.label}
+        </div>
+      ) : (
+        <a
+          href={`${item.path}`}
+          class:list={[...Astro.props["class:list"], clickableButton]}
+        >
+          {item.label}
+        </a>
+      );
+    })
+}

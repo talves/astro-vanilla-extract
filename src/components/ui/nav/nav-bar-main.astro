@@ -11,6 +11,7 @@ import {
   barButtonExtra,
 } from "@/components/ui/nav/nav.css";
 import NavButtons from "@/components/ui/nav/nav-buttons.astro";
+import NavButtonItems from "@/components/ui/nav/nav-button-items.astro";
 ---
 
 <div class:list={[barMain]}>
@@ -28,11 +29,8 @@ import NavButtons from "@/components/ui/nav/nav-buttons.astro";
   </div>
 
   <div class:list={[barMenuWrapper]}>
-    <!-- <NavButtons class:list={[barButtonItemsWrapper]}><slot /></NavButtons> -->
     <NavButtons class:list={[barButtonItemsWrapper]}>
-      <a href="#" class:list={[barButton, barButtonExtra]}>FIRST</a>
-      <a href="#" class:list={[barButton, barButtonExtra]}>SECOND</a>
-      <a href="#" class:list={[barButton, barButtonExtra]}>THIRD</a>
+      <NavButtonItems class:list={[barButton, barButtonExtra]} />
     </NavButtons>
   </div>
 </div>

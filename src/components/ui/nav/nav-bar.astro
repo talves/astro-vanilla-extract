@@ -11,27 +11,21 @@ import {
   barMobileButtonWrapper,
   barMobileMenuItemsWrapper,
 } from "@/components/ui/nav/nav.css";
+import NavButtonItems from "./nav-button-items.astro";
+import ThemeToggle from "../theme-toggle.astro";
 ---
 
 <NavWrapper style="width: 100%;">
   <NavBarWrapper>
     <NavFlexWrapper>
       <NavBarMain><slot /></NavBarMain>
-      <NavBarRight>Right Bar</NavBarRight>
+      <NavBarRight><ThemeToggle /></NavBarRight>
     </NavFlexWrapper>
   </NavBarWrapper>
   <!-- Mobile menu, show/hide based on menu state. TODO: Create menu for click control of display: none -->
   <div class:list={[barMobileButtonWrapper]}>
     <NavButtons class:list={[barMobileMenuItemsWrapper]}>
-      <a href="#" class:list={[barButtonMobile, barButtonMobileExtra]}
-        >Button1</a
-      >
-      <a href="#" class:list={[barButtonMobile, barButtonMobileExtra]}
-        >Button2</a
-      >
-      <a href="#" class:list={[barButtonMobile, barButtonMobileExtra]}
-        >Button3</a
-      >
+      <NavButtonItems class:list={[barButtonMobile, barButtonMobileExtra]} />
     </NavButtons>
   </div>
 </NavWrapper>

@@ -8,7 +8,7 @@ export const wrapper = style({
 
 export const barWrapper = sprinklesStyle({
   marginX: "auto",
-  maxWidth: "3xl",
+  maxWidth: "full",
   paddingX: "2",
 });
 export const barWrapperPadding = sprinklesStyle({
@@ -92,11 +92,6 @@ export const barButtonMobile = style({
   backgroundColor: vars.colors.background,
   color: vars.colors.primary,
   display: "block",
-  ":hover": {
-    backgroundColor: vars.colors.alternative,
-    color: vars.colors.white,
-    cursor: "pointer",
-  },
   fontWeight: vars.fontWeight.medium,
 });
 export const barButtonMobileExtra = sprinklesStyle({
@@ -108,13 +103,20 @@ export const barButtonMobileExtra = sprinklesStyle({
 export const barButton = style({
   backgroundColor: vars.colors.background,
   color: vars.colors.primary,
+  borderRadius: vars.borderRadius.md,
+  fontWeight: vars.fontWeight.medium,
+});
+
+export const clickableButton = style({
   ":hover": {
     backgroundColor: vars.colors.alternative,
     color: vars.colors.white,
     cursor: "pointer",
   },
-  borderRadius: vars.borderRadius.md,
-  fontWeight: vars.fontWeight.medium,
+});
+export const unclickableButton = style({
+  backgroundColor: vars.colors.alternative,
+  color: vars.colors.white,
 });
 
 export const barButtonExtra = sprinklesStyle({

@@ -1,0 +1,41 @@
+{
+  "menu": {
+    "items": [
+      {
+        "path": "/",
+        "hidden": false,
+        "label": "Home",
+        "type": "route",
+        "heading": "default"
+      },
+      {
+        "path": "/posts/",
+        "hidden": true,
+        "label": "Blog",
+        "type": "route",
+        "heading": "default"
+      },
+      {
+        "path": "/portfolio/",
+        "hidden": false,
+        "label": "Portfolio",
+        "type": "route",
+        "heading": "default"
+      },
+      {
+        "path": "/posts/",
+        "hidden": false,
+        "label": "Posts",
+        "type": "page",
+        "heading": "default"
+      },
+      {
+        "label": "About",
+        "hidden": false,
+        "type": "page",
+        "path": "/about/",
+        "heading": "default"
+      }
+    ]
+  }
+}
