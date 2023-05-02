@@ -4,7 +4,8 @@ import PageMainWrapper from "@/layouts/PageMainWrapper.astro";
 import PageWrapper from "@/layouts/PageWrapper.astro";
 import ListPageWrapper from "@/layouts/ListPageWrapper.astro";
 
-let { content: { type = "page" } = {} } = Astro.props; //default is page
+let { content: { type } = { type: Astro.props.type || "page" } } = Astro.props; //default is page
+
 if (Astro.props.meta && !Astro.props.type)
   type = Astro.props.meta.type || "item-page";
 if (Astro.props.posts) type = "list-page";

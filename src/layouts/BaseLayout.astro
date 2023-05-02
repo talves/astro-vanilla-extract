@@ -13,6 +13,7 @@ export interface Props {
   description: string;
   title: string;
   content?: Record<any, any>;
+  type?: "page" | "list-page" | "item-page";
 }
 
 const { description, title, content } = Astro.props as Props;
@@ -65,7 +66,7 @@ const seoImage = new URL("/og.jpg", Astro.site).toString();
   <body class:list={[lightThemeClass, bodyContainer]}>
     <FlexLayoutWrapper>
       <NavBar />
-      <SelectLayoutWrapper>
+      <SelectLayoutWrapper type={Astro.props.type}>
         <slot />
       </SelectLayoutWrapper>
     </FlexLayoutWrapper>
