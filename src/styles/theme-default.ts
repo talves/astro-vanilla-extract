@@ -607,7 +607,7 @@ type MaxWidth = {
   max: string;
   fit: string;
   prose: string;
-  [key: `max-w-${string}`]: string;
+  [key: `screen-${string}`]: string;
 };
 type ObjectPosition = {
   bottom: string;
@@ -1614,7 +1614,7 @@ export const theme: Theme = {
     max: "max-content",
     fit: "fit-content",
     prose: "65ch",
-    ...breakpoints(screens, "max-w"),
+    ...breakpoints(screens, "screen"),
   }),
   minHeight: {
     0: "0px",

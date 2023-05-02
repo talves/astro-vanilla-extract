@@ -1,11 +1,36 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import PageLayout from "@/layouts/PageLayout.astro";
 import Button from "@/components/ui/button.astro";
+
+import {
+  mainContainer,
+  container,
+  contentWrapper,
+  footer,
+  intro,
+  wrapper,
+} from "@/pages/index.css";
+
+const title = "Welcome to the home page";
 ---
 
 <BaseLayout description="Vanilla Extract Example" title="Home Page">
-  <PageLayout title="Welcome to the home page">
-    <p><Button>Call To Action</Button></p>
-  </PageLayout>
+  <div class={container}>
+    <div class:list={[mainContainer]}>
+      <div class:list={[wrapper]}>
+        <main class:list={[contentWrapper]}>
+          <h1>{title}</h1>
+          <p class:list={[intro]}>Here&rsquo;s the latest theme&hellip;</p>
+          <h2>SubTitle Here</h2>
+          <hr />
+          <p><Button>Call To Action</Button></p>
+        </main>
+        <footer class:list={[contentWrapper, footer]}>
+          <hr />
+          <p>You can <a href="#">unsubscribe here</a><sup>2</sup>.</p>
+          <p><code> var this = "this is this"</code></p>
+        </footer>
+      </div>
+    </div>
+  </div>
 </BaseLayout>

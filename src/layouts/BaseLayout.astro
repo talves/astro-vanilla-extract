@@ -4,26 +4,70 @@ import "@/styles/preflight.css";
 import "@/styles/global.css";
 import { lightThemeClass } from "@/styles/themes.css";
 import { bodyContainer } from "./BaseLayout.css";
+import FlexLayoutWrapper from "./FlexLayoutWrapper.astro";
+import NavBar from "@/components/ui/nav/nav-bar.astro";
+import SEO from "@/components/seo/SEO.astro";
+import SelectLayoutWrapper from "@/layouts/SelectLayoutWrapper.astro";
 
 export interface Props {
   description: string;
   title: string;
+  content?: Record<any, any>;
 }
 
-const { description, title } = Astro.props as Props;
+const { description, title, content } = Astro.props as Props;
+const seoTitle = title
+  ? title + " | " + "Astro Template"
+  : "Template for Astro";
+
+if (!Astro.site)
+  throw new Error("Add { site: <value>, } to your astro.config.mjs");
+
+const canonicalURL = new URL(Astro.url.pathname || "", Astro.site).toString();
+const seoImage = new URL("/og.jpg", Astro.site).toString();
 ---
 
 <html lang="en">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <!-- <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>{title}</title>
+    <meta name="description" content={description} /> -->
+    <SEO
+      title={seoTitle}
+      description={description}
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@talves",
+        site: "@talvesdev",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: `Astro Template - ${title}`,
+          image: seoImage,
+        },
+        image: {
+          alt: "Home Screenshot",
+        },
+      }}
+    />
+  </head>
   <body class:list={[lightThemeClass, bodyContainer]}>
-    <slot />
+    <FlexLayoutWrapper>
+      <NavBar />
+      <SelectLayoutWrapper>
+        <slot />
+      </SelectLayoutWrapper>
+    </FlexLayoutWrapper>
   </body>
 </html>
